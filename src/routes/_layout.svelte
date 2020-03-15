@@ -1,5 +1,5 @@
 <script>
-  import { docs } from "./_docs";
+  import { docs, flatDocs } from "./_docs";
   import Sidebar from "./_sidebar.svelte";
   import Content from "./_content.svelte";
   import Nav from "./_nav.svelte";
@@ -9,7 +9,13 @@
 <main>
   <div class="container">
     <div class="row row-reverse">
+
       <div class="col col-lg-9">
+        <div class="row">
+          <div class="form-control col col-md-6 display-lg-down">
+            <Sidebar {docs} isMobile />
+          </div>
+        </div>
         <Content>
           <slot />
         </Content>

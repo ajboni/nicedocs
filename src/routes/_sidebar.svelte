@@ -1,36 +1,42 @@
 <script>
-  export let docs;
   import Folder from "./_folder.svelte";
   import File from "./_file.svelte";
+  export let docs;
+
+  export let isMobile = false;
+  //   console.log(docs);
 </script>
 
-<div class="sidebar sidebar-left">
-  <ul class="sidebar-links">
+{#if !isMobile}
+  <div class="sidebar sidebar-left">
+    <ul class="sidebar-links">
+      {#each docs as doc}
+        <li>
+          {#if doc.type === 'category'}
+            <Folder {doc} isCategory />
+          {:else if doc.type === 'folder'}
+            <Folder {doc} />
+          {:else}
+            <File {doc} />
+          {/if}
+        </li>
+      {/each}
+
+    </ul>
+
+  </div>
+{:else}
+  <label for="">Jump to:</label>
+  <select onchange="window.location.href=this.value">
     {#each docs as doc}
-      <li>
-        {#if doc.type === 'category'}
-          <Folder {doc} isCategory />
-        {:else if doc.type === 'folder'}
-          <Folder {doc} />
-        {:else}
-          <File {doc} />
-        {/if}
-      </li>
+      {#if doc.type === 'category'}
+        <Folder {doc} isCategory isMobile />
+      {:else if doc.type === 'folder'}
+        <Folder {doc} isMobile />
+      {:else}
+        <File {doc} isMobile />
+      {/if}
     {/each}
 
-  </ul>
-
-  <!-- <h3 class="sidebar-category">Components</h3>
-  <ul class="sidebar-links">
-    <li>
-      <a href="#">Alerts</a>
-    </li>
-    <li>
-      <a href="#">Breadcrumbs</a>
-    </li>
-    <li>
-      <a class="active" href="#">Cards</a>
-    </li>
-
-  </ul> -->
-</div>
+  </select>
+{/if}

@@ -1,32 +1,46 @@
 <script>
   import config from "../config.yaml";
+  let showMobileMenu = false;
+
+  function toggleMenu() {
+    showMobileMenu = !showMobileMenu;
+  }
 </script>
+
+<style>
+  .mobile-menu {
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    z-index: 10;
+  }
+</style>
 
 <nav>
   <div class="nav-container">
     <div class="nav-logo">
-      <a href="index.html">PROJECT</a>
+      <a href="/">{config.projectName}</a>
     </div>
     <ul class="nav-links">
-      <li>
-        <a class="" href="docs/installation/index.html">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/kylelogue/mustard-ui" target="_blank">
-          GitHub
-        </a>
-      </li>
+      {#each config.navigation as nav}
+        <li>
+          <a href={nav.url} target="_blank">{nav.caption}</a>
+        </li>
+      {/each}
+
     </ul>
-    <!-- <a class="mobile-menu-toggle" /> -->
-    <ul class="mobile-menu menu">
-      <li>
-        <a href="docs/installation/index.html">Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/kylelogue/mustard-ui" target="_blank">
-          GitHub
-        </a>
-      </li>
-    </ul>
+    <div class="mobile-menu-toggle" on:click={toggleMenu} />
+
+    {#if showMobileMenu}
+      <ul class="mobile-menu menu">
+        {#each config.navigation as nav}
+          <li>
+            <a href={nav.url} target="_blank">{nav.caption}</a>
+          </li>
+        {/each}
+
+      </ul>
+    {/if}
+
   </div>
 </nav>

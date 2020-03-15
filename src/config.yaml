@@ -1,1 +1,6 @@
-projectName: PROJECT projectName
+projectName: Project Name
+navigation:
+  - caption: Site
+    url: "https://aboni.dev/"
+  - caption: Github
+    url: "https://github.com/ajboni/"

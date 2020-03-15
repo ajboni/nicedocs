@@ -29,11 +29,11 @@ export default {
 					});
 				}
 			},
-			yaml(),
 			replace({
 				'process.browser': true,
 				'process.env.NODE_ENV': JSON.stringify(mode)
 			}),
+			yaml(),
 			svelte({
 				dev,
 				hydratable: true,
@@ -74,6 +74,8 @@ export default {
 		input: config.server.input(),
 		output: config.server.output(),
 		plugins: [
+			yaml(),
+
 			replace({
 				'process.browser': false,
 				'process.env.NODE_ENV': JSON.stringify(mode)
