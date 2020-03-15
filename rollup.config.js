@@ -6,7 +6,7 @@ import babel from 'rollup-plugin-babel';
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
-// import yaml from '@rollup/plugin-yaml';
+import yaml from '@rollup/plugin-yaml';
 import fs from 'fs';
 
 
@@ -29,6 +29,7 @@ export default {
 					});
 				}
 			},
+			yaml(),
 			replace({
 				'process.browser': true,
 				'process.env.NODE_ENV': JSON.stringify(mode)

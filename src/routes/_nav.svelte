@@ -1,7 +1,11 @@
+<script>
+  import config from "../config.yaml";
+</script>
+
 <nav>
   <div class="nav-container">
     <div class="nav-logo">
-      <a href="index.html">mustard</a>
+      <a href="index.html">PROJECT</a>
     </div>
     <ul class="nav-links">
       <li>

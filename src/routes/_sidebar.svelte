@@ -8,14 +8,12 @@
   <ul class="sidebar-links">
     {#each docs as doc}
       <li>
-        <!-- content here -->
         {#if doc.type === 'category'}
           <Folder {doc} isCategory />
         {:else if doc.type === 'folder'}
           <Folder {doc} />
         {:else}
           <File {doc} />
-          <!-- FIle -->
         {/if}
       </li>
     {/each}
