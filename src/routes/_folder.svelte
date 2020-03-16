@@ -20,6 +20,9 @@
 </script>
 
 <style>
+  div :global(body) {
+    color: red;
+  }
   .sidebar-category.active + .sidebar-links {
     display: block;
   }
@@ -54,7 +57,7 @@
     </h3>
   {:else}
     <div
-      class={'sidebar-category nested ' + state}
+      class={'sidebar-category ' + state + ' nested'}
       on:click={toggleState}
       href="#">
       {#if state === 'active'}

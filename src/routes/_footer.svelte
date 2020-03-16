@@ -20,13 +20,13 @@
         <h4 class="footer-links-category">Links Category 1</h4>
         <ul class="footer-links">
           <li>
-            <a href="#">Link #1</a>
+            <a href="/">Link #1</a>
           </li>
           <li>
-            <a href="#">Link #2</a>
+            <a href="/">Link #2</a>
           </li>
           <li>
-            <a href="#">Link #3</a>
+            <a href="/">Link #3</a>
           </li>
         </ul>
       </div>
@@ -35,13 +35,13 @@
         <h4 class="footer-links-category">Links Category 2</h4>
         <ul class="footer-links">
           <li>
-            <a href="#">Link #1</a>
+            <a href="/">Link #1</a>
           </li>
           <li>
-            <a href="#">Link #2</a>
+            <a href="/">Link #2</a>
           </li>
           <li>
-            <a href="#">Link #3</a>
+            <a href="/">Link #3</a>
           </li>
         </ul>
       </div>

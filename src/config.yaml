@@ -1,7 +1,12 @@
-projectName: Project Name
+# Project name that appears next to the logo.
+projectName: Nice Docs
+
+# Links for the navbar
 navigation:
   - caption: Site
     url: "https://aboni.dev/"
   - caption: Github
 	 url: "https://github.com/ajboni/"
+
+# Copyright Disclaimer on Footer
 copyright: Made with 🧉 by Alexis Boni. Licensed under the GPLv3 License.
