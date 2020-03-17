@@ -2,14 +2,11 @@
   import Folder from "./_folder.svelte";
   import File from "./_file.svelte";
   export let docs;
-
-  export let isMobile = false;
   export let selected;
-  //   console.log(docs);
-
+  export let isMobile = false;
+  import { goto } from "@sapper/app";
   function jumpTo(e) {
-    console.log(selected);
-    //window.location.href=this.value
+    goto(selected);
   }
 </script>
 
