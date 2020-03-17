@@ -8,6 +8,7 @@ import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
 import yaml from '@rollup/plugin-yaml';
 import postcss from 'rollup-plugin-postcss'
+import autoprefixer from 'autoprefixer'
 import fs from 'fs';
 
 
@@ -30,11 +31,7 @@ export default {
 					});
 				}
 			},
-			postcss({
-				// We explicity leave css out in order to keep using svelte local styles. Might change in future.
-				extensions: ['.scss'],
-				plugins: []
-			}),
+
 			replace({
 				'process.browser': true,
 				'process.env.NODE_ENV': JSON.stringify(mode)
@@ -44,6 +41,15 @@ export default {
 				dev,
 				hydratable: true,
 				emitCss: true
+			}),
+			postcss({
+				// We explicity leave css out in order to keep using svelte local styles. Might change in future.
+				extensions: ['.scss'],
+				plugins: [
+					autoprefixer(),
+				],
+				// inject: true,
+				extract: 'static/global.css',
 			}),
 			resolve({
 				browser: true,
