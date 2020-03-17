@@ -2,7 +2,7 @@
   import Folder from "./_folder.svelte";
   import File from "./_file.svelte";
   export let docs;
-  export let selected;
+  let selected;
   export let isMobile = false;
   import { goto } from "@sapper/app";
   function jumpTo(e) {
@@ -29,8 +29,8 @@
 
   </div>
 {:else}
-  <label for="">Jump to:</label>
-  <select bind:value={selected} on:change={jumpTo}>
+  <label for="jumpToSelector">Jump to:</label>
+  <select id="jumpToSelector" bind:value={selected} on:change={jumpTo}>
     {#each docs as doc}
       {#if doc.type === 'category'}
         <Folder {doc} isCategory isMobile />
