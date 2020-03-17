@@ -2,8 +2,15 @@
   import config from "../config.yaml";
   let showMobileMenu = false;
 
-  function toggleMenu() {
-    showMobileMenu = !showMobileMenu;
+  function toggleMenu(e) {
+    console.log(e);
+    if (!showMobileMenu) {
+      if (e.target.closest(".mobile-menu-toggle") !== null) {
+        showMobileMenu = true;
+      }
+    } else {
+      showMobileMenu = false;
+    }
   }
 </script>
 
@@ -16,8 +23,10 @@
   }
 </style>
 
+<svelte:body on:click={toggleMenu} />
+
 <nav>
-  <div class="nav-container">
+  <div class="nav-container" }>
     <div class="nav-logo">
       <a href="/">{config.projectName}</a>
     </div>
@@ -33,10 +42,10 @@
       {/each}
 
     </ul>
-    <div class="mobile-menu-toggle" on:click={toggleMenu} />
+    <div class="mobile-menu-toggle" />
 
     {#if showMobileMenu}
-      <ul class="mobile-menu menu" on:blur={toggleMenu}>
+      <ul class="mobile-menu menu">
         {#each config.navigation as nav}
           <li>
 

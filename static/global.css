@@ -1,6 +1,7 @@
 /* PLACE YOUR APP OVERRIDES HERE */
 /* NAVIGATION */
 /* FOOTER */
+/* MENUS */
 /*!
 Mustard UI v0.0.5
 MIT License
@@ -1144,11 +1145,11 @@ nav,
   padding: 0 15px;
   height: 60px;
   width: 100%;
-  background: #1b5e20; }
+  background: #81c784; }
   nav a,
   .nav a {
     display: block;
-    color: #eeeeee; }
+    color: #424242; }
 
 .nav-container {
   display: flex;
