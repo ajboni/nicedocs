@@ -81,15 +81,18 @@
       </li>
     {/each}
   </ul>
+
   <!-- MOBILE SIDEBAR -->
 {:else}
-  <optgroup label={levelString + doc.title}>
-    {#each doc.children as subdoc}
-      {#if subdoc.type === 'folder'}
-        <svelte:self doc={subdoc} isMobile level={level + 4} />
-      {:else}
-        <File doc={subdoc} isMobile {level} />
-      {/if}
-    {/each}
-  </optgroup>
+  <!-- <optgroup label={levelString + doc.title}> -->
+  <option disabled>{levelString + doc.title}</option>
+  {#each doc.children as subdoc}
+    {#if subdoc.type === 'folder'}
+      <svelte:self doc={subdoc} isMobile level={level + 2} />
+    {:else}
+      <File doc={subdoc} isMobile level={level + 2} />
+    {/if}
+  {/each}
+
+  <!-- </optgroup> -->
 {/if}

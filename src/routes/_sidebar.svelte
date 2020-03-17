@@ -4,7 +4,13 @@
   export let docs;
 
   export let isMobile = false;
+  export let selected;
   //   console.log(docs);
+
+  function jumpTo(e) {
+    console.log(selected);
+    //window.location.href=this.value
+  }
 </script>
 
 {#if !isMobile}
@@ -27,7 +33,7 @@
   </div>
 {:else}
   <label for="">Jump to:</label>
-  <select onchange="window.location.href=this.value">
+  <select bind:value={selected} on:change={jumpTo}>
     {#each docs as doc}
       {#if doc.type === 'category'}
         <Folder {doc} isCategory isMobile />
