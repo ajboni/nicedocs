@@ -24,7 +24,11 @@
     <ul class="nav-links">
       {#each config.navigation as nav}
         <li>
-          <a href={nav.url} target="_blank">{nav.caption}</a>
+
+          <a href={nav.url} target="_blank">
+            <span class={nav.icon} style="margin-right: .5rem;" />
+            {nav.caption}
+          </a>
         </li>
       {/each}
 
@@ -32,9 +36,10 @@
     <div class="mobile-menu-toggle" on:click={toggleMenu} />
 
     {#if showMobileMenu}
-      <ul class="mobile-menu menu">
+      <ul class="mobile-menu menu" on:blur={toggleMenu}>
         {#each config.navigation as nav}
           <li>
+
             <a href={nav.url} target="_blank">{nav.caption}</a>
           </li>
         {/each}

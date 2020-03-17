@@ -4,9 +4,11 @@ projectName: Nice Docs
 # Links for the navbar
 navigation:
   - caption: Site
+    icon: "fas fa-globe"
     url: "https://aboni.dev/"
   - caption: Github
-	 url: "https://github.com/ajboni/"
+    icon: "fab fa-github"
+    url: "https://github.com/ajboni/"
 
 # Copyright Disclaimer on Footer
 copyright: Made with 🧉 by Alexis Boni. Licensed under the GPLv3 License.
