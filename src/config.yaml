@@ -1,5 +1,6 @@
 # Project name that appears next to the logo.
 projectName: Nice Docs
+projectLogo: "book.svg"
 
 # Links for the navbar
 navigation:

@@ -21,6 +21,16 @@
     right: 30px;
     z-index: 10;
   }
+
+  .nav-logo a {
+    display: flex;
+    margin-right: 1rem;
+    font-size: 1.8rem;
+  }
+
+  .nav-logo img {
+    margin-right: 1rem;
+  }
 </style>
 
 <svelte:body on:click={toggleMenu} />
@@ -28,7 +38,10 @@
 <nav>
   <div class="nav-container" }>
     <div class="nav-logo">
-      <a href="/">{config.projectName}</a>
+      <a href="/">
+        <img src={config.projectLogo} alt="nicedocs-logo" />
+        <span>{config.projectName}</span>
+      </a>
     </div>
     <ul class="nav-links">
       {#each config.navigation as nav}
