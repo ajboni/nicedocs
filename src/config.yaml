@@ -1,6 +1,9 @@
-# Project name that appears next to the logo.
+# Project and logo on the navbar.
 projectName: Nice Docs
 projectLogo: "book.svg"
+
+# Default language for the site. Must be the same as the root folder of docs.
+defaultLanguage: "eng"
 
 # Links for the navbar
 navigation:

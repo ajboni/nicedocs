@@ -1,12 +1,9 @@
-
 @import "~mustard-ui/src/scss/vars/colors.scss";
 
 /* PLACE YOUR APP OVERRIDES HERE */
 
-
-
 /* NAVIGATION */
-  $nav-bg-color: $color-green-300;
+$nav-bg-color: $color-green-300;
 // $nav-link-color: $color-gray-200;
 // $nav-link-active-color: $brand-color !default;
 // $nav-menu-toggle-color: $color-gray-100;
@@ -21,6 +18,4 @@ $footer-links-color: $color-gray-400;
 // $menu-bg-color:  $color-gray-900;
 // $menu-hover-color: $color-gray-800;
 
-
 @import "~mustard-ui/src/scss/mustard-ui.scss";
-
