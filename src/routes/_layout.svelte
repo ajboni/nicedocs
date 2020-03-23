@@ -20,7 +20,11 @@
   }
 </style>
 
-<div class="page-container">docs
+<div class="page-container">
+  <Nav />
+  <main>
+    <div class="container">
+      <div class="row row-reverse">
 
         <div class="col col-lg-9">
           <div class="row">
