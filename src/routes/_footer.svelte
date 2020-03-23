@@ -48,6 +48,8 @@
     </div>
   </div>
 
-  <p class="copyright align-center">{config.copyright}</p>
+  <p class="copyright align-center">
+    {@html config.copyright}
+  </p>
 
 </footer>
