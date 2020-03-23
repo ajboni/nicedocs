@@ -20,7 +20,6 @@ Open up [localhost:3000](http://localhost:3000) and start clicking around.
 
 Consult [sapper.svelte.dev](https://sapper.svelte.dev) for help getting started.
 
-
 ## Structure
 
 Sapper expects to find two directories in the root of your project —  `src` and `static`.
