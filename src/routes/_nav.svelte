@@ -3,7 +3,7 @@
   let showMobileMenu = false;
 
   function toggleMenu(e) {
-    console.log(e);
+    //  console.log(e);
     if (!showMobileMenu) {
       if (e.target.closest(".mobile-menu-toggle") !== null) {
         showMobileMenu = true;

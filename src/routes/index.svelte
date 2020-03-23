@@ -1,3 +1,26 @@
+<script context="module">
+  import config from "../config.yaml";
+  import { docs } from "../store";
+  export async function preload({ host, path, params, query }) {
+    // If language parameter, change accordingly
+    let lang = query.lang ? query.lang : config.defaultLanguage;
+
+    var searchParams = new URLSearchParams(query);
+    const res = await this.fetch(`index.json?${searchParams}`);
+    const json = await res.json();
+    console.log(json);
+    docs.set(json);
+
+    //  console.log(json);
+    //  const processedPosts = filterByTag(json.contents, query.tag);
+    //  docs.set(processedPosts);
+    //  tags.set(json.tags);
+    //  tagFilter.set(query.tag);
+    //  pageInfo.set({ host, path, params, query });
+    //  return res;
+  }
+</script>
+
 <h1>Landing Page.</h1>
 
 <p>

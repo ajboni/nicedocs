@@ -2,11 +2,13 @@
   export async function preload({ params, query }) {
     // the `slug` parameter is available because
     // this file is called [slug].svelte
-    const res = await this.fetch(`${params.slug}.json`);
+    var searchParams = new URLSearchParams(query);
+
+    const res = await this.fetch(`${params.slug}.json?${searchParams}`);
     const data = await res.json();
 
     if (res.status === 200) {
-      return { doc: data };
+      return { data };
     } else {
       this.error(res.status, data.message);
     }
@@ -14,7 +16,13 @@
 </script>
 
 <script>
-  export let doc;
+  export let data;
+  import { docs } from "../store";
+
+  const doc = data.doc;
+
+  // Fill up docs store, otherwise if user gets into the url directly, we wont get the sidebar.
+  docs.set(data.docs);
 </script>
 
 <style>

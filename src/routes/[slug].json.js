@@ -1,31 +1,33 @@
-import { docs } from './_docs.js';
+import { LoadDocs } from './_docs.js';
+
+// It was necessary lo reload the documents each time, otherwise, users reaching from the outside wouldnt get sidebar.
+// Could be improved.
+
 
 const lookup = new Map();
-docs.forEach(doc => {
-	readDoc(doc)
-});
 
-function readDoc(doc) {
-	if (doc.type === 'folder' || doc.type === 'category') {
-		doc.children.forEach(subdoc => {
-			readDoc(subdoc)
-		});
 
-	}
-	lookup.set(doc.slug, JSON.stringify(doc));
-}
 
 export function get(req, res, next) {
 	// the `slug` parameter is available because
 	// this file is called [slug].json.js
 	const { slug } = req.params;
 
+
+	const docs = LoadDocs(req.query.lang);
+	docs.forEach(doc => {
+		readDoc(doc)
+	});
+
 	if (lookup.has(slug)) {
 		res.writeHead(200, {
 			'Content-Type': 'application/json'
 		});
 
-		res.end(lookup.get(slug));
+		const resObj = { doc: lookup.get(slug), docs: docs }
+		res.end(JSON.stringify(resObj));
+
+
 	} else {
 		res.writeHead(404, {
 			'Content-Type': 'application/json'
@@ -35,4 +37,16 @@ export function get(req, res, next) {
 			message: `Not found`
 		}));
 	}
+}
+
+function readDoc(doc) {
+	if (doc.type === 'folder' || doc.type === 'category') {
+		doc.children.forEach(subdoc => {
+			readDoc(subdoc)
+		});
+
+	}
+	lookup.set(doc.slug, doc);
+
+
 }
