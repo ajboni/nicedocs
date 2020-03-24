@@ -1,115 +1,15 @@
-// export const docs = [
-// 	{
-// 		type: "category",
-// 		title: "Category 1",
-// 		children: [
-// 			{
-// 				title: "Doc 1",
-// 				slug: "doc1",
-// 				type: "file",
-// 				content: "Lorem Ipsum"
-// 			},
-// 			{
-// 				title: "Doc 2",
-// 				slug: "doc2",
-// 				type: "file",
-// 				content: "Lorem Ipsum"
-// 			},
-// 			{
-// 				title: "Doc 3",
-// 				slug: "doc3",
-// 				type: "file",
-// 				content: "Lorem Ipsum"
-// 			},
-// 			{
-// 				title: "Subfolder",
-// 				type: "folder",
-// 				children: [
-// 					{
-// 						title: "Doc 4",
-// 						slug: "sub-doc1",
-// 						type: "file",
-// 						content: "Lorem Ipsum"
-// 					},
-// 					{
-// 						title: "Doc 5",
-// 						slug: "sub-doc2",
-// 						type: "file",
-// 						content: "Lorem Ipsum"
-// 					}
-// 				]loadedDocs
-// 			},
-// 			{
-// 				title: "Subfolder",
-// 				type: "folder",
-// 				children: [
-// 					{
-// 						title: "Doc 4",
-// 						slug: "sub-doc1",
-// 						type: "file",
-// 						content: "Lorem Ipsum"
-// 					},
-// 					{
-// 						title: "Doc 5",
-// 						slug: "sub-doc2",
-// 						type: "file",
-// 						content: "Lorem Ipsum"
-// 					}
-// 				]
-// 			}
-// 		]
-// 	},
-// 	{
-// 		type: "category",
-// 		title: "Category 2",
-// 		children: [
-// 			{
-// 				title: "Doc 1",
-// 				slug: "doc1",
-// 				type: "file",
-// 				content: "Lorem Ipsum"
-// 			},
-// 			{
-// 				title: "Doc 2",
-// 				slug: "doc2",
-// 				type: "file",
-// 				content: "Lorem Ipsum"
-// 			},
-// 			{
-// 				title: "Doc 3",
-// 				slug: "doc3",
-// 				type: "file",
-// 				content: "Lorem Ipsum"
-// 			}
-// 		]
-// 	},
-// 	{
-// 		type: "file",
-// 		slug: "doc6",
-// 		title: "Another Doc",
-// 		content: "Lorem Ipsum 66"
-// 	}
-// ];
-
 import fs from 'fs';
 import * as matter from 'gray-matter';
 import config from "../config.yaml";
 export let docs = [];
 
-const shiki = require('shiki')
 const MarkdownIt = require('markdown-it');
-const md = new MarkdownIt({
-	html: true,
-	linkify: true,
-	typographer: true,
-	breaks: true,
-});
 
 
 const emoji = require('markdown-it-emoji');
 const mark = require('markdown-it-mark');
-md.use(emoji);
-md.use(mark);
+const anchor = require('markdown-it-anchor');
+
 
 
 
@@ -165,15 +65,28 @@ function loadDocsRecursively(path, level = 0) {
 		else {
 			obj.type = "file";
 			obj.slug = slugify(formatTitle(docFile))
-			obj.content = parseContent(fs.readFileSync(path + "/" + docFile).toString())
+			obj.content = parseContent(fs.readFileSync(path + "/" + docFile).toString(), slugify(formatTitle(docFile)))
 		}
 		docs.push(obj);
 	})
 	return docs;
 }
 
-function parseContent(content) {
+function parseContent(content, slug) {
+	const md = new MarkdownIt({
+		html: true,
+		linkify: true,
+		typographer: true,
+		breaks: true,
+	});
+	md.use(emoji);
+	md.use(mark);
 
+	md.use(anchor, {
+		permalink: true,
+		permalinkSymbol: '🔗',
+		permalinkHref: s => `${slug}#${s}`
+	})
 	content = md.render(content);
 	return content;
 

@@ -2,17 +2,26 @@
 
 /* PLACE YOUR APP OVERRIDES HERE */
 
-
 p > img {
-
 	max-width: 50%;
-	// margin-left: auto;
-	// margin-right: auto;
-	// border: 1px solid #ddd;
 	border-radius: 4px;
-	// padding: 5px;
 	display: block;
 }
+
+h1:hover .header-anchor,
+h2:hover .header-anchor,
+h3:hover .header-anchor,
+h4:hover .header-anchor,
+h5:hover .header-anchor  {
+	display: contents;
+	font-size: 1rem;
+}
+
+.header-anchor {
+	display: none;
+}
+
+/* Variables of Mustard UI */
 
 /* NAVIGATION */
 $nav-bg-color: $color-green-300;
