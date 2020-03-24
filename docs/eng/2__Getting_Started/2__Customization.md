@@ -10,4 +10,4 @@ In this file you can customize data about the project, logo, default language, n
 
 Here you can override variables from the UI framework ([MustardUI](https://mustard-ui.com)) and create your own variables/styles.
 
-Svelte style tag will also work if you want to use it.
+Svelte `style` tag will also work if you want to use it.
