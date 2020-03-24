@@ -5,7 +5,7 @@ import { LoadDocs } from './_docs.js';
 
 
 const lookup = new Map();
-
+let docs = [];
 
 
 export function get(req, res, next) {
@@ -14,10 +14,15 @@ export function get(req, res, next) {
 	const { slug } = req.params;
 
 
-	const docs = LoadDocs(req.query.lang);
-	docs.forEach(doc => {
-		readDoc(doc)
-	});
+	// Parse files only once.
+	// TODO: See how affects localization.
+	if (lookup.size === 0) {
+		docs = LoadDocs(req.query.lang);
+		docs.forEach(doc => {
+			readDoc(doc)
+		});
+	}
+
 
 	if (lookup.has(slug)) {
 		res.writeHead(200, {
