@@ -16,8 +16,9 @@
 </script>
 
 <script>
-  export let data;
   import { docs } from "../store";
+  import config from "../config.yaml";
+  export let data;
 
   const doc = data.doc;
 
@@ -62,7 +63,7 @@
 </style>
 
 <svelte:head>
-  <title>{doc.type}</title>
+  <title>{doc.title} | {config.projectName}</title>
 </svelte:head>
 
 <h1>{doc.title}</h1>

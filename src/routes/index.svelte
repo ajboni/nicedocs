@@ -21,6 +21,10 @@
   }
 </script>
 
+<svelte:head>
+  <title>{config.projectName}</title>
+</svelte:head>
+
 <h1>Landing Page.</h1>
 
 <p>
