@@ -5,4 +5,5 @@ Thanks for checking out this little project. This site is entirely built with Ni
 Please notice that some sections may be short on purpose or unnecessarily nested in order to showcase and test the nav generation.  
 
 Here's a dog picture for the trouble:
-![dog]()
+
+![dogo](./img/puppy.jpg)

@@ -91,14 +91,27 @@
 // 	}
 // ];
 
-import fs, { unwatchFile } from 'fs';
-import marked from 'marked';
+import fs from 'fs';
 import * as matter from 'gray-matter';
 import config from "../config.yaml";
-
-// Todo: Import Prism.
-
 export let docs = [];
+
+const shiki = require('shiki')
+const MarkdownIt = require('markdown-it');
+const md = new MarkdownIt({
+	html: true,
+	linkify: true,
+	typographer: true,
+	breaks: true,
+});
+
+
+const emoji = require('markdown-it-emoji');
+const mark = require('markdown-it-mark');
+md.use(emoji);
+md.use(mark);
+
+
 
 
 export function LoadDocs(lang = "eng") {
@@ -152,13 +165,19 @@ function loadDocsRecursively(path, level = 0) {
 		else {
 			obj.type = "file";
 			obj.slug = slugify(formatTitle(docFile))
-			obj.content = fs.readFileSync(path + "/" + docFile).toString()
+			obj.content = parseContent(fs.readFileSync(path + "/" + docFile).toString())
 		}
 		docs.push(obj);
 	})
 	return docs;
 }
 
+function parseContent(content) {
+
+	content = md.render(content);
+	return content;
+
+}
 
 function formatTitle(name) {
 	name = name.split("__").pop();

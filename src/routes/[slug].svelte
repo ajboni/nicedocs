@@ -21,7 +21,6 @@
   export let data;
 
   const doc = data.doc;
-
   // Fill up docs store, otherwise if user gets into the url directly, we wont get the sidebar.
   docs.set(data.docs);
 </script>
@@ -40,7 +39,7 @@
     font-weight: 500;
   }
 
-  .content :global(pre) {
+  /* .content :global(pre) {
     background-color: #f9f9f9;
     box-shadow: inset 1px 1px 5px rgba(0, 0, 0, 0.05);
     padding: 0.5em;
@@ -51,7 +50,7 @@
   .content :global(pre) :global(code) {
     background-color: transparent;
     padding: 0;
-  }
+  } */
 
   .content :global(ul) {
     line-height: 1.5;
@@ -64,9 +63,15 @@
 
 <svelte:head>
   <title>{doc.title} | {config.projectName}</title>
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/themes/prism.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/prism.min.js">
+
+  </script>
 </svelte:head>
 
-<h1>{doc.title}</h1>
+<!-- <h1>{doc.title}</h1> -->
 
 <div class="content">
   {@html doc.content}

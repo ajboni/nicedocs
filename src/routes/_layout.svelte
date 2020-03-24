@@ -3,7 +3,7 @@
   import { docs } from "../store";
   import { get } from "svelte/store";
 
-  //temp
+  //temps
   //   let docs = [];
   let flatDocs = [];
 

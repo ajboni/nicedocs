@@ -1,7 +1,13 @@
 /* PLACE YOUR APP OVERRIDES HERE */
+p > img {
+  max-width: 50%;
+  border-radius: 4px;
+  display: block; }
+
 /* NAVIGATION */
 /* FOOTER */
 /* MENUS */
+/* CODE */
 /*!
 Mustard UI v0.0.5
 MIT License
