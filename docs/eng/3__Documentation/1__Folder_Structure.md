@@ -22,6 +22,10 @@ docs/
         1__Sobre/
             1__Hola.md
             2__Adios.md
-        2__Instalación
+        2__Instalación/
             1__Etc.md
 ```
+
+## src Folder
+
+At the moment, the most relevant file here is `src/routes/index.svelte`.
