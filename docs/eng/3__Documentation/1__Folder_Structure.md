@@ -13,13 +13,15 @@ In the following levels folders and files will be rendered in the sidebar as nav
 
 An example folder structure would be:
 
-````
+```
 docs/
     eng/
         1__About/
             1__Hello.md
     spa/
-        1_Sobre
-            1_Hola.md
-    ```
-````
+        1__Sobre/
+            1__Hola.md
+            2__Adios.md
+        2__Instalación
+            1__Etc.md
+```
