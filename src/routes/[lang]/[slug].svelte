@@ -2,9 +2,8 @@
   export async function preload({ params, query }) {
     // the `slug` parameter is available because
     // this file is called [slug].svelte
-    var searchParams = new URLSearchParams(query);
 
-    const res = await this.fetch(`${params.slug}.json?${searchParams}`);
+    const res = await this.fetch(`${params.lang}/${params.slug}.json`);
     const data = await res.json();
 
     if (res.status === 200) {
@@ -16,8 +15,8 @@
 </script>
 
 <script>
-  import { docs } from "../store";
-  import config from "../config.yaml";
+  import { docs } from "../../store";
+  import config from "../../config.yaml";
   export let data;
 
   const doc = data.doc;

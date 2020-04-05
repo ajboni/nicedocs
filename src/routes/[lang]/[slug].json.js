@@ -11,25 +11,29 @@ let docs = [];
 export function get(req, res, next) {
 	// the `slug` parameter is available because
 	// this file is called [slug].json.js
-	const { slug } = req.params;
+	const { slug, lang } = req.params
+	const localizedSlug = lang + "/" + slug;
 
 
 	// Parse files only once.
 	// TODO: See how affects localization.
-	if (lookup.size === 0) {
-		docs = LoadDocs(req.query.lang);
-		docs.forEach(doc => {
-			readDoc(doc)
-		});
-	}
+	// if (lookup.size === 0) {
+
+	docs = LoadDocs(lang);
+	docs.forEach(doc => {
+		readDoc(doc, lang)
+	});
 
 
-	if (lookup.has(slug)) {
+	// }
+
+
+	if (lookup.has(localizedSlug)) {
 		res.writeHead(200, {
 			'Content-Type': 'application/json'
 		});
 
-		const resObj = { doc: lookup.get(slug), docs: docs }
+		const resObj = { doc: lookup.get(localizedSlug), docs: docs }
 		res.end(JSON.stringify(resObj));
 
 
@@ -39,19 +43,19 @@ export function get(req, res, next) {
 		});
 
 		res.end(JSON.stringify({
-			message: `Not found`
+			message: `Not found ${localizedSlug}`
 		}));
 	}
 }
 
-function readDoc(doc) {
+function readDoc(doc, lang) {
 	if (doc.type === 'folder' || doc.type === 'category') {
 		doc.children.forEach(subdoc => {
 			readDoc(subdoc)
 		});
 
 	}
-	lookup.set(doc.slug, doc);
 
+	lookup.set(doc.slug, doc);
 
 }

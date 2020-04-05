@@ -8,6 +8,8 @@
   function jumpTo(e) {
     goto(selected);
   }
+
+  docs = docs.filter(doc => !doc.title.startsWith("."));
 </script>
 
 {#if !isMobile}

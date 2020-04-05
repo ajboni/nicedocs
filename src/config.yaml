@@ -2,8 +2,21 @@
 projectName: Nice Docs
 projectLogo: "book.svg"
 
-# Default language for the site. Must be the same as the root folder of docs.
+# Index document to load when the usear reach root URL. Should be the same for every language.
+indexDocument: ".index"
+
+# Default language for the site, used when user reach root URL without /lang/ slug.  
+# Must be the same name as the root folder of docs.
 defaultLanguage: "eng"
+
+# Available Languages 
+availableLanguages:
+  - id: eng
+    icon: "fa fa-user"
+    caption: "English"
+  - id: spa
+    icon: "fa fa-user"
+    caption: "Spanish"
 
 # Links for the navbar
 navigation:

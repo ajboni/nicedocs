@@ -9,7 +9,7 @@
 </script>
 
 {#if !isMobile}
-  <a href={doc.slug}>{doc.title}</a>
+  <a href={`${doc.slug}`}>{doc.title}</a>
 {:else}
   <option value={doc.slug}>{levelString + doc.title}</option>
 {/if}

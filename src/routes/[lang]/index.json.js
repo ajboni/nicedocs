@@ -1,4 +1,4 @@
-import { LoadDocs } from './[lang]/_docs.js';
+import { LoadDocs } from './_docs.js';
 
 
 
