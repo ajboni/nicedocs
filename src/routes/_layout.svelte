@@ -1,6 +1,6 @@
 <script>
   //   import { docs, flatDocs } from "./_docs";
-  import { docs } from "../store";
+  import { docs, currentLanguage } from "../store";
   import { get } from "svelte/store";
 
   //temps

@@ -1,5 +1,5 @@
 import { LoadDocs } from './_docs.js';
-
+import { getLanguage, currentLanguage } from '../../store.js'
 // It was necessary lo reload the documents each time, otherwise, users reaching from the outside wouldnt get sidebar.
 // Could be improved.
 
@@ -12,6 +12,7 @@ export function get(req, res, next) {
 	// the `slug` parameter is available because
 	// this file is called [slug].json.js
 	const { slug, lang } = req.params
+	// currentLanguage.set(getLanguage(lang))
 	const localizedSlug = lang + "/" + slug;
 
 
@@ -19,7 +20,8 @@ export function get(req, res, next) {
 	// TODO: See how affects localization.
 	// if (lookup.size === 0) {
 
-	docs = LoadDocs(lang);
+	const language = getLanguage(lang)
+	docs = LoadDocs(language);
 	docs.forEach(doc => {
 		readDoc(doc, lang)
 	});

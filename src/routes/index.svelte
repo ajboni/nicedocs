@@ -1,10 +1,12 @@
 <script context="module">
   import config from "../config.yaml";
-  import { docs, currentLanguage } from "../store";
+  import { docs, currentLanguage, getLanguage } from "../store";
   import { get } from "svelte/store";
 
   export async function preload({ host, path, params, query }) {
-    const res = await this.fetch(`index.json?lang=${get(currentLanguage)}`);
+    const res = await this.fetch(
+      `index.json?lang=${JSON.stringify(getLanguage("default"))}`
+    );
     const json = await res.json();
 
     if (res.status === 200) {
@@ -14,6 +16,8 @@
     }
 
     // Set the store value
+    //  console.log(params.lang);
+    //  currentLanguage.set(getLanguage("default"));
   }
 </script>
 

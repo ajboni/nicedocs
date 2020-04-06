@@ -15,15 +15,15 @@ An example folder structure would be:
 
 ```
 docs/
-    eng/
-        1__About/
-            1__Hello.md
-    spa/
-        1__Sobre/
-            1__Hola.md
-            2__Adios.md
-        2__Instalación/
-            1__Etc.md
+├── eng/
+|   └── 1__About/
+|       └── 1__Hello.md
+├── spa/
+    ├── 1__Sobre/
+    |   ├── 1__Hola.md
+    |   └── 2__Adios.md
+    └── 2__Instalación/
+        └── 1__Etc.md
 ```
 
 ## src Folder

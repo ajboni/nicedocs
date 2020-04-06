@@ -1,6 +1,8 @@
 import fs from 'fs';
 import * as matter from 'gray-matter';
 import config from "../../config.yaml";
+import { getLanguage, currentLanguage } from '../../store.js'
+
 export let docs = [];
 
 const MarkdownIt = require('markdown-it');
@@ -11,14 +13,11 @@ const mark = require('markdown-it-mark');
 const anchor = require('markdown-it-anchor');
 
 
-
-
-
 export function LoadDocs(lang) {
-
-	if (!lang) { lang = config.defaultLanguage }
+	// Set the store value
+	currentLanguage.set(lang)
 	let loadedDocs = [];
-	let path = './docs/' + lang;
+	let path = './docs/' + lang.id;
 
 	// if (!fs.existsSync(path)) {
 	// 	// If language fails, fallback and make a new check for default language. 
@@ -67,7 +66,7 @@ function loadDocsRecursively(path, lang, level = 0) {
 		}
 		else {
 			obj.type = "file";
-			obj.slug = lang + "/" + slugify(formatTitle(docFile))
+			obj.slug = lang.id + "/" + slugify(formatTitle(docFile))
 			obj.content = parseContent(fs.readFileSync(path + "/" + docFile).toString(), slugify(formatTitle(docFile)))
 		}
 		docs.push(obj);
@@ -98,7 +97,7 @@ function parseContent(content, slug) {
 
 function formatTitle(name) {
 	name = name.split("__").pop();
-	name = name.replace("_", " ");
+	name = name.replace(/_+/g, " ");
 	name = name.replace(".md", "");
 
 	return name;
@@ -111,7 +110,7 @@ function slugify(text) {
 		.replace(/\s+/g, '-')           // Replace spaces with -
 		.replace(/[^\w\-]+/g, '')       // Remove all non-word chars
 		.replace(/\-\-+/g, '-')         // Replace multiple - with single -
-		.replace('_', '-')				  // replace _ with -
+		.replace(/_+/g, '-')				  // replace _ with -
 		.replace(/^-+/, '')             // Trim - from start of text
 		.replace(/-+$/, '');            // Trim - from end of text
 }
@@ -213,30 +212,3 @@ function removeDiacritics(str) {
 
 }
 
-// /* Flatten and return a list of files/folders */
-// function implode(arr) {
-// 	let result = [];
-// 	arr.forEach(item => {
-// 		let obj = {};
-
-// 		// We want to preserve order and only then process children, so we need to do it two passes.
-// 		for (const prop in item) {
-// 			if (typeof item[prop] !== "object") {
-// 				obj[prop] = item[prop];
-// 			}
-// 		}
-// 		result.push(obj);
-
-// 		for (const prop in item) {
-// 			if (typeof item[prop] === "object") {
-// 				if (Array.isArray(item[prop])) {
-// 					let subResult = implode(item[prop]);
-// 					result = result.concat(subResult);
-// 				}
-// 			}
-// 		}
-// 	});
-// 	return result;
-// }
-
-// export const flatDocs = implode(docs);

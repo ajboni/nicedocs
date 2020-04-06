@@ -1,6 +1,10 @@
 <script>
   import config from "../config.yaml";
+  import { get } from "svelte/store";
+  import { goto } from "@sapper/app";
+  import { getLanguage, currentLanguage } from "../store.js";
   let showMobileMenu = false;
+  let showLanguageMenu = false;
 
   function toggleMenu(e) {
     //  console.log(e);
@@ -11,7 +15,21 @@
     } else {
       showMobileMenu = false;
     }
+
+    if (!showLanguageMenu) {
+      if (e.target.closest("#header-language-menu") !== null) {
+        showLanguageMenu = true;
+      }
+    } else {
+      showLanguageMenu = false;
+    }
   }
+
+  function changeLanguage(lang) {
+    goto(lang.id).then(() => location.reload());
+  }
+
+  let currentLanguageCaption = get(currentLanguage).capti;
 </script>
 
 <style>
@@ -43,7 +61,11 @@
         <span>{config.projectName}</span>
       </a>
     </div>
+
+    <ul class="nav-links" />
+
     <ul class="nav-links">
+
       {#each config.navigation as nav}
         <li>
 
@@ -54,15 +76,57 @@
         </li>
       {/each}
 
+      <li class="nav-dropdown-container">
+        <button
+          id="header-language-menu"
+          type="button"
+          class="nav-dropdown-menu-label"
+          aria-haspopup="true"
+          aria-owns="language-menu"
+          aria-label="Current language is English. Choose your preferred
+          language.">
+          <span class="fa fa-language" style="margin-right: .5rem;" />
+          <!-- {$currentLanguage.caption} &nbsp; -->
+          {currentLanguageCaption} &nbsp;
+          <span class="dropdown-arrow-down" aria-hidden="true">▼</span>
+        </button>
+
+        {#if showLanguageMenu}
+          <!-- content here -->
+          <ul
+            id="language-menu"
+            class="nav-dropdown-menu-items right"
+            role="menu">
+            {#each config.availableLanguages as lang}
+              <li class="nav-menuitem">
+                <!-- <a href={lang.id}>{lang.caption}</a> -->
+                <div
+                  style={'cursor:pointer'}
+                  on:click={() => changeLanguage(lang)}>
+                  {lang.caption}
+                </div>
+              </li>
+            {/each}
+          </ul>
+        {/if}
+
+      </li>
     </ul>
     <div class="mobile-menu-toggle" />
-
     {#if showMobileMenu}
       <ul class="mobile-menu menu">
         {#each config.navigation as nav}
           <li>
-
             <a href={nav.url} target="_blank">{nav.caption}</a>
+
+          </li>
+        {/each}
+
+        {#each config.availableLanguages as lang}
+          <li>
+            <a href="#" on:click={changeLanguage(lang)} title="Catalan">
+              {lang.caption}
+            </a>
           </li>
         {/each}
 

@@ -3,8 +3,8 @@ import { LoadDocs } from './[lang]/_docs.js';
 
 
 export function get(req, res) {
-
-	const contents = LoadDocs(req.query.lang)
+	console.log(req.query)
+	const contents = LoadDocs(JSON.parse(req.query.lang))
 
 
 	// console.log(req)

@@ -16,7 +16,7 @@ availableLanguages:
     caption: "English"
   - id: spa
     icon: "fa fa-user"
-    caption: "Spanish"
+    caption: "Español"
 
 # Links for the navbar
 navigation:
