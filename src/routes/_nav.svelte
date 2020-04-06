@@ -28,8 +28,6 @@
   function changeLanguage(lang) {
     goto(lang.id).then(() => location.reload());
   }
-
-  let currentLanguageCaption = get(currentLanguage).capti;
 </script>
 
 <style>
@@ -56,7 +54,7 @@
 <nav>
   <div class="nav-container" }>
     <div class="nav-logo">
-      <a href="/">
+      <a href={$currentLanguage.id}>
         <img src={config.projectLogo} alt="nicedocs-logo" />
         <span>{config.projectName}</span>
       </a>
@@ -87,7 +85,7 @@
           language.">
           <span class="fa fa-language" style="margin-right: .5rem;" />
           <!-- {$currentLanguage.caption} &nbsp; -->
-          {currentLanguageCaption} &nbsp;
+          {$currentLanguage.caption} &nbsp;
           <span class="dropdown-arrow-down" aria-hidden="true">▼</span>
         </button>
 

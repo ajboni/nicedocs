@@ -4,8 +4,9 @@
   import { get } from "svelte/store";
 
   export async function preload({ host, path, params, query }) {
+    currentLanguage.set(getLanguage("eng"));
     const res = await this.fetch(
-      `index.json?lang=${JSON.stringify(getLanguage("default"))}`
+      `index.json?lang=${JSON.stringify(getLanguage("eng"))}`
     );
     const json = await res.json();
 

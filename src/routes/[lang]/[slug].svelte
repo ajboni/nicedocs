@@ -6,7 +6,6 @@
 
     const language = getLanguage(params.lang);
     currentLanguage.set(language);
-    console.log(get(currentLanguage));
 
     const res = await this.fetch(`${params.lang}/${params.slug}.json`);
     let data = await res.json();

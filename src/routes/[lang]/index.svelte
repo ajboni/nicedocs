@@ -23,7 +23,12 @@
 </script>
 
 <script>
+  import config from "../../config.yaml";
+  import { get } from "svelte/store";
 
+  const index = get(docs).find(doc => doc.title === config.indexDocument);
 </script>
 
-<h1>saddsaadsdas {$currentLanguage.id}</h1>
+<div class="content">
+  {@html index.content}
+</div>
