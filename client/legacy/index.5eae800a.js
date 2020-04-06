@@ -1,4 +1,4 @@
-import { _ as _asyncToGenerator, a as _regeneratorRuntime, g as get_store_value, b as _inherits, c as _classCallCheck, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, S as SvelteComponentDev, f as config, h as docs, v as validate_slots, j as currentLanguage, k as _getPrototypeOf, l as _possibleConstructorReturn, m as space, n as element, q as query_selector_all, o as detach_dev, p as claim_space, r as claim_element, t as children, u as attr_dev, w as add_location, x as insert_dev, y as _slicedToArray, z as noop } from './client.630d5263.js';
+import { _ as _asyncToGenerator, a as _regeneratorRuntime, c as currentLanguage, g as getLanguage, b as _inherits, d as _classCallCheck, i as init, s as safe_not_equal, e as _assertThisInitialized, f as dispatch_dev, S as SvelteComponentDev, h as config, j as docs, k as get_store_value, v as validate_slots, l as _getPrototypeOf, m as _possibleConstructorReturn, n as space, o as element, q as query_selector_all, p as detach_dev, r as claim_space, t as claim_element, u as children, w as attr_dev, x as add_location, y as insert_dev, z as _slicedToArray, A as noop } from './client.a8b026ca.js';
 
 function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -32,7 +32,7 @@ function create_fragment(ctx) {
     },
     h: function hydrate() {
       attr_dev(div, "class", "content");
-      add_location(div, file, 27, 0, 655);
+      add_location(div, file, 32, 0, 826);
     },
     m: function mount(target, anchor) {
       insert_dev(target, t, anchor);
@@ -69,6 +69,7 @@ function create_fragment(ctx) {
 function preload(_x) {
   return _preload.apply(this, arguments);
 } // Set the store value
+//  console.log(params.lang);
 
 
 function _preload() {
@@ -79,15 +80,16 @@ function _preload() {
         switch (_context.prev = _context.next) {
           case 0:
             host = _ref3.host, path = _ref3.path, params = _ref3.params, query = _ref3.query;
-            _context.next = 3;
-            return this.fetch("index.json?lang=".concat(get_store_value(currentLanguage)));
+            currentLanguage.set(getLanguage("eng"));
+            _context.next = 4;
+            return this.fetch("index.json?lang=".concat(JSON.stringify(getLanguage("eng"))));
 
-          case 3:
+          case 4:
             res = _context.sent;
-            _context.next = 6;
+            _context.next = 7;
             return res.json();
 
-          case 6:
+          case 7:
             json = _context.sent;
 
             if (res.status === 200) {
@@ -96,7 +98,7 @@ function _preload() {
               this.error(res.status, data.message);
             }
 
-          case 8:
+          case 9:
           case "end":
             return _context.stop();
         }
@@ -124,6 +126,7 @@ function instance($$self, $$props, $$invalidate) {
       config: config,
       docs: docs,
       currentLanguage: currentLanguage,
+      getLanguage: getLanguage,
       get: get_store_value,
       preload: preload,
       index: index

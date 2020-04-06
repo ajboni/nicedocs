@@ -1725,8 +1725,36 @@ var preload = function preload() {
   return {};
 };
 
+var data = { projectName:"Nice Docs",
+  projectLogo:"book.svg",
+  indexDocument:".index",
+  defaultLanguage:"eng",
+  availableLanguages:[ { id:"eng",
+      icon:"fa fa-user",
+      caption:"English" },
+    { id:"spa",
+      icon:"fa fa-user",
+      caption:"Español" } ],
+  navigation:[ { caption:"Site",
+      icon:"fas fa-globe",
+      url:"https://aboni.dev/" },
+    { caption:"Github",
+      icon:"fab fa-github",
+      url:"https://github.com/ajboni/" } ],
+  copyright:"Made with 🧉 by <a href=\"https://aboni.dev\">Alexis Boni</a>. Licensed under the GPLv3 License." };
+
 var docs = writable([]);
-var currentLanguage = writable('eng');
+var currentLanguage = writable({});
+function getLanguage(id) {
+  var language = data.availableLanguages.find(function (lang) {
+    return lang.id === id;
+  }) ? data.availableLanguages.find(function (lang) {
+    return lang.id === id;
+  }) : data.availableLanguages.find(function (lang) {
+    return lang.id === data.defaultLanguage;
+  });
+  return language;
+}
 
 function _createSuper$1(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct$1()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -4714,24 +4742,6 @@ var Content = /*#__PURE__*/function (_SvelteComponentDev) {
   return Content;
 }(SvelteComponentDev);
 
-var data = { projectName:"Nice Docs",
-  projectLogo:"book.svg",
-  indexDocument:".index",
-  defaultLanguage:"eng",
-  availableLanguages:[ { id:"eng",
-      icon:"fa fa-user",
-      caption:"English" },
-    { id:"spa",
-      icon:"fa fa-user",
-      caption:"Spanish" } ],
-  navigation:[ { caption:"Site",
-      icon:"fas fa-globe",
-      url:"https://aboni.dev/" },
-    { caption:"Github",
-      icon:"fab fa-github",
-      url:"https://github.com/ajboni/" } ],
-  copyright:"Made with 🧉 by <a href=\"https://aboni.dev\">Alexis Boni</a>. Licensed under the GPLv3 License." };
-
 function _createSuper$6(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct$6()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _isNativeReflectConstruct$6() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
@@ -4739,18 +4749,30 @@ var file$5 = "src/routes/_nav.svelte";
 
 function get_each_context$2(ctx, list, i) {
   var child_ctx = ctx.slice();
-  child_ctx[2] = list[i];
+  child_ctx[5] = list[i];
   return child_ctx;
 }
 
 function get_each_context_1$2(ctx, list, i) {
   var child_ctx = ctx.slice();
-  child_ctx[2] = list[i];
+  child_ctx[8] = list[i];
   return child_ctx;
-} // (47:6) {#each config.navigation as nav}
+}
+
+function get_each_context_2(ctx, list, i) {
+  var child_ctx = ctx.slice();
+  child_ctx[5] = list[i];
+  return child_ctx;
+}
+
+function get_each_context_3(ctx, list, i) {
+  var child_ctx = ctx.slice();
+  child_ctx[8] = list[i];
+  return child_ctx;
+} // (67:6) {#each config.navigation as nav}
 
 
-function create_each_block_1$2(ctx) {
+function create_each_block_3(ctx) {
   var li;
   var a;
   var span;
@@ -4758,10 +4780,9 @@ function create_each_block_1$2(ctx) {
   var t0;
   var t1_value =
   /*nav*/
-  ctx[2].caption + "";
+  ctx[8].caption + "";
   var t1;
   var a_href_value;
-  var t2;
   var block = {
     c: function create() {
       li = element("li");
@@ -4769,7 +4790,6 @@ function create_each_block_1$2(ctx) {
       span = element("span");
       t0 = space();
       t1 = text(t1_value);
-      t2 = space();
       this.h();
     },
     l: function claim(nodes) {
@@ -4788,22 +4808,21 @@ function create_each_block_1$2(ctx) {
       t0 = claim_space(a_nodes);
       t1 = claim_text(a_nodes, t1_value);
       a_nodes.forEach(detach_dev);
-      t2 = claim_space(li_nodes);
       li_nodes.forEach(detach_dev);
       this.h();
     },
     h: function hydrate() {
       attr_dev(span, "class", span_class_value = "" + (null_to_empty(
       /*nav*/
-      ctx[2].icon) + " svelte-gbajag"));
+      ctx[8].icon) + " svelte-gbajag"));
       set_style(span, "margin-right", ".5rem");
-      add_location(span, file$5, 50, 12, 953);
+      add_location(span, file$5, 70, 12, 1447);
       attr_dev(a, "href", a_href_value =
       /*nav*/
-      ctx[2].url);
+      ctx[8].url);
       attr_dev(a, "target", "_blank");
-      add_location(a, file$5, 49, 10, 906);
-      add_location(li, file$5, 47, 8, 890);
+      add_location(a, file$5, 69, 10, 1400);
+      add_location(li, file$5, 67, 8, 1384);
     },
     m: function mount(target, anchor) {
       insert_dev(target, li, anchor);
@@ -4811,7 +4830,6 @@ function create_each_block_1$2(ctx) {
       append_dev(a, span);
       append_dev(a, t0);
       append_dev(a, t1);
-      append_dev(li, t2);
     },
     p: noop,
     d: function destroy(detaching) {
@@ -4820,23 +4838,23 @@ function create_each_block_1$2(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_each_block_1$2.name,
+    id: create_each_block_3.name,
     type: "each",
-    source: "(47:6) {#each config.navigation as nav}",
+    source: "(67:6) {#each config.navigation as nav}",
     ctx: ctx
   });
   return block;
-} // (60:4) {#if showMobileMenu}
+} // (92:8) {#if showLanguageMenu}
 
 
-function create_if_block$4(ctx) {
+function create_if_block_1$2(ctx) {
   var ul;
-  var each_value = data.navigation;
-  validate_each_argument(each_value);
+  var each_value_2 = data.availableLanguages;
+  validate_each_argument(each_value_2);
   var each_blocks = [];
 
-  for (var i = 0; i < each_value.length; i += 1) {
-    each_blocks[i] = create_each_block$2(get_each_context$2(ctx, each_value, i));
+  for (var i = 0; i < each_value_2.length; i += 1) {
+    each_blocks[i] = create_each_block_2(get_each_context_2(ctx, each_value_2, i));
   }
 
   var block = {
@@ -4851,7 +4869,9 @@ function create_if_block$4(ctx) {
     },
     l: function claim(nodes) {
       ul = claim_element(nodes, "UL", {
-        class: true
+        id: true,
+        class: true,
+        role: true
       });
       var ul_nodes = children(ul);
 
@@ -4863,8 +4883,10 @@ function create_if_block$4(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(ul, "class", "mobile-menu menu svelte-gbajag");
-      add_location(ul, file$5, 60, 6, 1159);
+      attr_dev(ul, "id", "language-menu");
+      attr_dev(ul, "class", "nav-dropdown-menu-items right");
+      attr_dev(ul, "role", "menu");
+      add_location(ul, file$5, 93, 10, 2226);
     },
     m: function mount(target, anchor) {
       insert_dev(target, ul, anchor);
@@ -4875,20 +4897,20 @@ function create_if_block$4(ctx) {
     },
     p: function update(ctx, dirty) {
       if (dirty &
-      /*config*/
+      /*changeLanguage, config*/
       0) {
-        each_value = data.navigation;
-        validate_each_argument(each_value);
+        each_value_2 = data.availableLanguages;
+        validate_each_argument(each_value_2);
 
         var _i4;
 
-        for (_i4 = 0; _i4 < each_value.length; _i4 += 1) {
-          var child_ctx = get_each_context$2(ctx, each_value, _i4);
+        for (_i4 = 0; _i4 < each_value_2.length; _i4 += 1) {
+          var child_ctx = get_each_context_2(ctx, each_value_2, _i4);
 
           if (each_blocks[_i4]) {
             each_blocks[_i4].p(child_ctx, dirty);
           } else {
-            each_blocks[_i4] = create_each_block$2(child_ctx);
+            each_blocks[_i4] = create_each_block_2(child_ctx);
 
             each_blocks[_i4].c();
 
@@ -4900,7 +4922,7 @@ function create_if_block$4(ctx) {
           each_blocks[_i4].d(1);
         }
 
-        each_blocks.length = each_value.length;
+        each_blocks.length = each_value_2.length;
       }
     },
     d: function destroy(detaching) {
@@ -4910,24 +4932,310 @@ function create_if_block$4(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_if_block$4.name,
+    id: create_if_block_1$2.name,
     type: "if",
-    source: "(60:4) {#if showMobileMenu}",
+    source: "(92:8) {#if showLanguageMenu}",
     ctx: ctx
   });
   return block;
-} // (62:8) {#each config.navigation as nav}
+} // (98:12) {#each config.availableLanguages as lang}
+
+
+function create_each_block_2(ctx) {
+  var li;
+  var div;
+  var t0_value =
+  /*lang*/
+  ctx[5].caption + "";
+  var t0;
+  var div_style_value;
+  var t1;
+  var dispose;
+
+  function click_handler() {
+    var _ctx;
+
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return (
+      /*click_handler*/
+      (_ctx = ctx)[4].apply(_ctx, [
+      /*lang*/
+      ctx[5]].concat(args))
+    );
+  }
+
+  var block = {
+    c: function create() {
+      li = element("li");
+      div = element("div");
+      t0 = text(t0_value);
+      t1 = space();
+      this.h();
+    },
+    l: function claim(nodes) {
+      li = claim_element(nodes, "LI", {
+        class: true
+      });
+      var li_nodes = children(li);
+      div = claim_element(li_nodes, "DIV", {
+        style: true
+      });
+      var div_nodes = children(div);
+      t0 = claim_text(div_nodes, t0_value);
+      div_nodes.forEach(detach_dev);
+      t1 = claim_space(li_nodes);
+      li_nodes.forEach(detach_dev);
+      this.h();
+    },
+    h: function hydrate() {
+      attr_dev(div, "style", div_style_value = "cursor:pointer");
+      add_location(div, file$5, 100, 16, 2508);
+      attr_dev(li, "class", "nav-menuitem");
+      add_location(li, file$5, 98, 14, 2404);
+    },
+    m: function mount(target, anchor, remount) {
+      insert_dev(target, li, anchor);
+      append_dev(li, div);
+      append_dev(div, t0);
+      append_dev(li, t1);
+      if (remount) dispose();
+      dispose = listen_dev(div, "click", click_handler, false, false, false);
+    },
+    p: function update(new_ctx, dirty) {
+      ctx = new_ctx;
+    },
+    d: function destroy(detaching) {
+      if (detaching) detach_dev(li);
+      dispose();
+    }
+  };
+  dispatch_dev("SvelteRegisterBlock", {
+    block: block,
+    id: create_each_block_2.name,
+    type: "each",
+    source: "(98:12) {#each config.availableLanguages as lang}",
+    ctx: ctx
+  });
+  return block;
+} // (114:4) {#if showMobileMenu}
+
+
+function create_if_block$4(ctx) {
+  var ul;
+  var t;
+  var each_value_1 = data.navigation;
+  validate_each_argument(each_value_1);
+  var each_blocks_1 = [];
+
+  for (var i = 0; i < each_value_1.length; i += 1) {
+    each_blocks_1[i] = create_each_block_1$2(get_each_context_1$2(ctx, each_value_1, i));
+  }
+
+  var each_value = data.availableLanguages;
+  validate_each_argument(each_value);
+  var each_blocks = [];
+
+  for (var _i5 = 0; _i5 < each_value.length; _i5 += 1) {
+    each_blocks[_i5] = create_each_block$2(get_each_context$2(ctx, each_value, _i5));
+  }
+
+  var block = {
+    c: function create() {
+      ul = element("ul");
+
+      for (var _i6 = 0; _i6 < each_blocks_1.length; _i6 += 1) {
+        each_blocks_1[_i6].c();
+      }
+
+      t = space();
+
+      for (var _i7 = 0; _i7 < each_blocks.length; _i7 += 1) {
+        each_blocks[_i7].c();
+      }
+
+      this.h();
+    },
+    l: function claim(nodes) {
+      ul = claim_element(nodes, "UL", {
+        class: true
+      });
+      var ul_nodes = children(ul);
+
+      for (var _i8 = 0; _i8 < each_blocks_1.length; _i8 += 1) {
+        each_blocks_1[_i8].l(ul_nodes);
+      }
+
+      t = claim_space(ul_nodes);
+
+      for (var _i9 = 0; _i9 < each_blocks.length; _i9 += 1) {
+        each_blocks[_i9].l(ul_nodes);
+      }
+
+      ul_nodes.forEach(detach_dev);
+      this.h();
+    },
+    h: function hydrate() {
+      attr_dev(ul, "class", "mobile-menu menu svelte-gbajag");
+      add_location(ul, file$5, 114, 6, 2832);
+    },
+    m: function mount(target, anchor) {
+      insert_dev(target, ul, anchor);
+
+      for (var _i10 = 0; _i10 < each_blocks_1.length; _i10 += 1) {
+        each_blocks_1[_i10].m(ul, null);
+      }
+
+      append_dev(ul, t);
+
+      for (var _i11 = 0; _i11 < each_blocks.length; _i11 += 1) {
+        each_blocks[_i11].m(ul, null);
+      }
+    },
+    p: function update(ctx, dirty) {
+      if (dirty &
+      /*config*/
+      0) {
+        each_value_1 = data.navigation;
+        validate_each_argument(each_value_1);
+
+        var _i12;
+
+        for (_i12 = 0; _i12 < each_value_1.length; _i12 += 1) {
+          var child_ctx = get_each_context_1$2(ctx, each_value_1, _i12);
+
+          if (each_blocks_1[_i12]) {
+            each_blocks_1[_i12].p(child_ctx, dirty);
+          } else {
+            each_blocks_1[_i12] = create_each_block_1$2(child_ctx);
+
+            each_blocks_1[_i12].c();
+
+            each_blocks_1[_i12].m(ul, t);
+          }
+        }
+
+        for (; _i12 < each_blocks_1.length; _i12 += 1) {
+          each_blocks_1[_i12].d(1);
+        }
+
+        each_blocks_1.length = each_value_1.length;
+      }
+
+      if (dirty &
+      /*changeLanguage, config*/
+      0) {
+        each_value = data.availableLanguages;
+        validate_each_argument(each_value);
+
+        var _i13;
+
+        for (_i13 = 0; _i13 < each_value.length; _i13 += 1) {
+          var _child_ctx = get_each_context$2(ctx, each_value, _i13);
+
+          if (each_blocks[_i13]) {
+            each_blocks[_i13].p(_child_ctx, dirty);
+          } else {
+            each_blocks[_i13] = create_each_block$2(_child_ctx);
+
+            each_blocks[_i13].c();
+
+            each_blocks[_i13].m(ul, null);
+          }
+        }
+
+        for (; _i13 < each_blocks.length; _i13 += 1) {
+          each_blocks[_i13].d(1);
+        }
+
+        each_blocks.length = each_value.length;
+      }
+    },
+    d: function destroy(detaching) {
+      if (detaching) detach_dev(ul);
+      destroy_each(each_blocks_1, detaching);
+      destroy_each(each_blocks, detaching);
+    }
+  };
+  dispatch_dev("SvelteRegisterBlock", {
+    block: block,
+    id: create_if_block$4.name,
+    type: "if",
+    source: "(114:4) {#if showMobileMenu}",
+    ctx: ctx
+  });
+  return block;
+} // (116:8) {#each config.navigation as nav}
+
+
+function create_each_block_1$2(ctx) {
+  var li;
+  var a;
+  var t_value =
+  /*nav*/
+  ctx[8].caption + "";
+  var t;
+  var a_href_value;
+  var block = {
+    c: function create() {
+      li = element("li");
+      a = element("a");
+      t = text(t_value);
+      this.h();
+    },
+    l: function claim(nodes) {
+      li = claim_element(nodes, "LI", {});
+      var li_nodes = children(li);
+      a = claim_element(li_nodes, "A", {
+        href: true,
+        target: true
+      });
+      var a_nodes = children(a);
+      t = claim_text(a_nodes, t_value);
+      a_nodes.forEach(detach_dev);
+      li_nodes.forEach(detach_dev);
+      this.h();
+    },
+    h: function hydrate() {
+      attr_dev(a, "href", a_href_value =
+      /*nav*/
+      ctx[8].url);
+      attr_dev(a, "target", "_blank");
+      add_location(a, file$5, 117, 12, 2930);
+      add_location(li, file$5, 116, 10, 2913);
+    },
+    m: function mount(target, anchor) {
+      insert_dev(target, li, anchor);
+      append_dev(li, a);
+      append_dev(a, t);
+    },
+    p: noop,
+    d: function destroy(detaching) {
+      if (detaching) detach_dev(li);
+    }
+  };
+  dispatch_dev("SvelteRegisterBlock", {
+    block: block,
+    id: create_each_block_1$2.name,
+    type: "each",
+    source: "(116:8) {#each config.navigation as nav}",
+    ctx: ctx
+  });
+  return block;
+} // (123:8) {#each config.availableLanguages as lang}
 
 
 function create_each_block$2(ctx) {
   var li;
   var a;
   var t0_value =
-  /*nav*/
-  ctx[2].caption + "";
+  /*lang*/
+  ctx[5].caption + "";
   var t0;
-  var a_href_value;
   var t1;
+  var dispose;
   var block = {
     c: function create() {
       li = element("li");
@@ -4941,7 +5249,7 @@ function create_each_block$2(ctx) {
       var li_nodes = children(li);
       a = claim_element(li_nodes, "A", {
         href: true,
-        target: true
+        title: true
       });
       var a_nodes = children(a);
       t0 = claim_text(a_nodes, t0_value);
@@ -4951,29 +5259,34 @@ function create_each_block$2(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(a, "href", a_href_value =
-      /*nav*/
-      ctx[2].url);
-      attr_dev(a, "target", "_blank");
-      add_location(a, file$5, 64, 12, 1258);
-      add_location(li, file$5, 62, 10, 1240);
+      attr_dev(a, "href", "#");
+      attr_dev(a, "title", "Catalan");
+      add_location(a, file$5, 124, 12, 3093);
+      add_location(li, file$5, 123, 10, 3076);
     },
-    m: function mount(target, anchor) {
+    m: function mount(target, anchor, remount) {
       insert_dev(target, li, anchor);
       append_dev(li, a);
       append_dev(a, t0);
       append_dev(li, t1);
+      if (remount) dispose();
+      dispose = listen_dev(a, "click", changeLanguage(
+      /*lang*/
+      ctx[5]), false, false, false);
     },
-    p: noop,
+    p: function update(new_ctx, dirty) {
+      ctx = new_ctx;
+    },
     d: function destroy(detaching) {
       if (detaching) detach_dev(li);
+      dispose();
     }
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
     id: create_each_block$2.name,
     type: "each",
-    source: "(62:8) {#each config.navigation as nav}",
+    source: "(123:8) {#each config.availableLanguages as lang}",
     ctx: ctx
   });
   return block;
@@ -4988,24 +5301,43 @@ function create_fragment$5(ctx) {
   var img;
   var img_src_value;
   var t1;
-  var span;
+  var span0;
   var t2_value = data.projectName + "";
   var t2;
+  var a_href_value;
   var t3;
-  var ul;
+  var ul0;
   var t4;
-  var div1;
+  var ul1;
   var t5;
+  var li;
+  var button;
+  var span1;
+  var t6;
+  var t7_value =
+  /*$currentLanguage*/
+  ctx[2].caption + "";
+  var t7;
+  var t8;
+  var span2;
+  var t9;
+  var t10;
+  var t11;
+  var div1;
+  var t12;
   var dispose;
-  var each_value_1 = data.navigation;
-  validate_each_argument(each_value_1);
+  var each_value_3 = data.navigation;
+  validate_each_argument(each_value_3);
   var each_blocks = [];
 
-  for (var i = 0; i < each_value_1.length; i += 1) {
-    each_blocks[i] = create_each_block_1$2(get_each_context_1$2(ctx, each_value_1, i));
+  for (var i = 0; i < each_value_3.length; i += 1) {
+    each_blocks[i] = create_each_block_3(get_each_context_3(ctx, each_value_3, i));
   }
 
-  var if_block =
+  var if_block0 =
+  /*showLanguageMenu*/
+  ctx[1] && create_if_block_1$2(ctx);
+  var if_block1 =
   /*showMobileMenu*/
   ctx[0] && create_if_block$4(ctx);
   var block = {
@@ -5017,19 +5349,32 @@ function create_fragment$5(ctx) {
       a = element("a");
       img = element("img");
       t1 = space();
-      span = element("span");
+      span0 = element("span");
       t2 = text(t2_value);
       t3 = space();
-      ul = element("ul");
+      ul0 = element("ul");
+      t4 = space();
+      ul1 = element("ul");
 
-      for (var _i5 = 0; _i5 < each_blocks.length; _i5 += 1) {
-        each_blocks[_i5].c();
+      for (var _i14 = 0; _i14 < each_blocks.length; _i14 += 1) {
+        each_blocks[_i14].c();
       }
 
-      t4 = space();
-      div1 = element("div");
       t5 = space();
-      if (if_block) if_block.c();
+      li = element("li");
+      button = element("button");
+      span1 = element("span");
+      t6 = space();
+      t7 = text(t7_value);
+      t8 = text("  \n          ");
+      span2 = element("span");
+      t9 = text("▼");
+      t10 = space();
+      if (if_block0) if_block0.c();
+      t11 = space();
+      div1 = element("div");
+      t12 = space();
+      if (if_block1) if_block1.c();
       this.h();
     },
     l: function claim(nodes) {
@@ -5056,30 +5401,68 @@ function create_fragment$5(ctx) {
         class: true
       });
       t1 = claim_space(a_nodes);
-      span = claim_element(a_nodes, "SPAN", {});
-      var span_nodes = children(span);
-      t2 = claim_text(span_nodes, t2_value);
-      span_nodes.forEach(detach_dev);
+      span0 = claim_element(a_nodes, "SPAN", {});
+      var span0_nodes = children(span0);
+      t2 = claim_text(span0_nodes, t2_value);
+      span0_nodes.forEach(detach_dev);
       a_nodes.forEach(detach_dev);
       div0_nodes.forEach(detach_dev);
       t3 = claim_space(div2_nodes);
-      ul = claim_element(div2_nodes, "UL", {
+      ul0 = claim_element(div2_nodes, "UL", {
         class: true
       });
-      var ul_nodes = children(ul);
+      children(ul0).forEach(detach_dev);
+      t4 = claim_space(div2_nodes);
+      ul1 = claim_element(div2_nodes, "UL", {
+        class: true
+      });
+      var ul1_nodes = children(ul1);
 
-      for (var _i6 = 0; _i6 < each_blocks.length; _i6 += 1) {
-        each_blocks[_i6].l(ul_nodes);
+      for (var _i15 = 0; _i15 < each_blocks.length; _i15 += 1) {
+        each_blocks[_i15].l(ul1_nodes);
       }
 
-      ul_nodes.forEach(detach_dev);
-      t4 = claim_space(div2_nodes);
+      t5 = claim_space(ul1_nodes);
+      li = claim_element(ul1_nodes, "LI", {
+        class: true
+      });
+      var li_nodes = children(li);
+      button = claim_element(li_nodes, "BUTTON", {
+        id: true,
+        type: true,
+        class: true,
+        "aria-haspopup": true,
+        "aria-owns": true,
+        "aria-label": true
+      });
+      var button_nodes = children(button);
+      span1 = claim_element(button_nodes, "SPAN", {
+        class: true,
+        style: true
+      });
+      children(span1).forEach(detach_dev);
+      t6 = claim_space(button_nodes);
+      t7 = claim_text(button_nodes, t7_value);
+      t8 = claim_text(button_nodes, "  \n          ");
+      span2 = claim_element(button_nodes, "SPAN", {
+        class: true,
+        "aria-hidden": true
+      });
+      var span2_nodes = children(span2);
+      t9 = claim_text(span2_nodes, "▼");
+      span2_nodes.forEach(detach_dev);
+      button_nodes.forEach(detach_dev);
+      t10 = claim_space(li_nodes);
+      if (if_block0) if_block0.l(li_nodes);
+      li_nodes.forEach(detach_dev);
+      ul1_nodes.forEach(detach_dev);
+      t11 = claim_space(div2_nodes);
       div1 = claim_element(div2_nodes, "DIV", {
         class: true
       });
       children(div1).forEach(detach_dev);
-      t5 = claim_space(div2_nodes);
-      if (if_block) if_block.l(div2_nodes);
+      t12 = claim_space(div2_nodes);
+      if (if_block1) if_block1.l(div2_nodes);
       div2_nodes.forEach(detach_dev);
       nav_nodes.forEach(detach_dev);
       this.h();
@@ -5088,21 +5471,40 @@ function create_fragment$5(ctx) {
       if (img.src !== (img_src_value = data.projectLogo)) attr_dev(img, "src", img_src_value);
       attr_dev(img, "alt", "nicedocs-logo");
       attr_dev(img, "class", "svelte-gbajag");
-      add_location(img, file$5, 41, 8, 699);
-      add_location(span, file$5, 42, 8, 760);
-      attr_dev(a, "href", "/");
+      add_location(img, file$5, 57, 8, 1161);
+      add_location(span0, file$5, 58, 8, 1222);
+      attr_dev(a, "href", a_href_value =
+      /*$currentLanguage*/
+      ctx[2].id);
       attr_dev(a, "class", "svelte-gbajag");
-      add_location(a, file$5, 40, 6, 678);
+      add_location(a, file$5, 56, 6, 1122);
       attr_dev(div0, "class", "nav-logo svelte-gbajag");
-      add_location(div0, file$5, 39, 4, 649);
-      attr_dev(ul, "class", "nav-links");
-      add_location(ul, file$5, 45, 4, 820);
+      add_location(div0, file$5, 55, 4, 1093);
+      attr_dev(ul0, "class", "nav-links");
+      add_location(ul0, file$5, 62, 4, 1283);
+      attr_dev(span1, "class", "fa fa-language");
+      set_style(span1, "margin-right", ".5rem");
+      add_location(span1, file$5, 85, 10, 1904);
+      attr_dev(span2, "class", "dropdown-arrow-down");
+      attr_dev(span2, "aria-hidden", "true");
+      add_location(span2, file$5, 88, 10, 2072);
+      attr_dev(button, "id", "header-language-menu");
+      attr_dev(button, "type", "button");
+      attr_dev(button, "class", "nav-dropdown-menu-label");
+      attr_dev(button, "aria-haspopup", "true");
+      attr_dev(button, "aria-owns", "language-menu");
+      attr_dev(button, "aria-label", "Current language is English. Choose your preferred\n          language.");
+      add_location(button, file$5, 77, 8, 1622);
+      attr_dev(li, "class", "nav-dropdown-container");
+      add_location(li, file$5, 76, 6, 1578);
+      attr_dev(ul1, "class", "nav-links");
+      add_location(ul1, file$5, 64, 4, 1313);
       attr_dev(div1, "class", "mobile-menu-toggle");
-      add_location(div1, file$5, 57, 4, 1092);
+      add_location(div1, file$5, 112, 4, 2766);
       attr_dev(div2, "class", "nav-container");
       attr_dev(div2, "}", "");
-      add_location(div2, file$5, 38, 2, 615);
-      add_location(nav, file$5, 37, 0, 607);
+      add_location(div2, file$5, 54, 2, 1059);
+      add_location(nav, file$5, 53, 0, 1051);
     },
     m: function mount(target, anchor, remount) {
       insert_dev(target, t0, anchor);
@@ -5112,70 +5514,112 @@ function create_fragment$5(ctx) {
       append_dev(div0, a);
       append_dev(a, img);
       append_dev(a, t1);
-      append_dev(a, span);
-      append_dev(span, t2);
+      append_dev(a, span0);
+      append_dev(span0, t2);
       append_dev(div2, t3);
-      append_dev(div2, ul);
+      append_dev(div2, ul0);
+      append_dev(div2, t4);
+      append_dev(div2, ul1);
 
-      for (var _i7 = 0; _i7 < each_blocks.length; _i7 += 1) {
-        each_blocks[_i7].m(ul, null);
+      for (var _i16 = 0; _i16 < each_blocks.length; _i16 += 1) {
+        each_blocks[_i16].m(ul1, null);
       }
 
-      append_dev(div2, t4);
+      append_dev(ul1, t5);
+      append_dev(ul1, li);
+      append_dev(li, button);
+      append_dev(button, span1);
+      append_dev(button, t6);
+      append_dev(button, t7);
+      append_dev(button, t8);
+      append_dev(button, span2);
+      append_dev(span2, t9);
+      append_dev(li, t10);
+      if (if_block0) if_block0.m(li, null);
+      append_dev(div2, t11);
       append_dev(div2, div1);
-      append_dev(div2, t5);
-      if (if_block) if_block.m(div2, null);
+      append_dev(div2, t12);
+      if (if_block1) if_block1.m(div2, null);
       if (remount) dispose();
       dispose = listen_dev(document.body, "click",
       /*toggleMenu*/
-      ctx[1], false, false, false);
+      ctx[3], false, false, false);
     },
     p: function update(ctx, _ref) {
       var _ref2 = _slicedToArray(_ref, 1),
           dirty = _ref2[0];
 
       if (dirty &
+      /*$currentLanguage*/
+      4 && a_href_value !== (a_href_value =
+      /*$currentLanguage*/
+      ctx[2].id)) {
+        attr_dev(a, "href", a_href_value);
+      }
+
+      if (dirty &
       /*config*/
       0) {
-        each_value_1 = data.navigation;
-        validate_each_argument(each_value_1);
+        each_value_3 = data.navigation;
+        validate_each_argument(each_value_3);
 
-        var _i8;
+        var _i17;
 
-        for (_i8 = 0; _i8 < each_value_1.length; _i8 += 1) {
-          var child_ctx = get_each_context_1$2(ctx, each_value_1, _i8);
+        for (_i17 = 0; _i17 < each_value_3.length; _i17 += 1) {
+          var child_ctx = get_each_context_3(ctx, each_value_3, _i17);
 
-          if (each_blocks[_i8]) {
-            each_blocks[_i8].p(child_ctx, dirty);
+          if (each_blocks[_i17]) {
+            each_blocks[_i17].p(child_ctx, dirty);
           } else {
-            each_blocks[_i8] = create_each_block_1$2(child_ctx);
+            each_blocks[_i17] = create_each_block_3(child_ctx);
 
-            each_blocks[_i8].c();
+            each_blocks[_i17].c();
 
-            each_blocks[_i8].m(ul, null);
+            each_blocks[_i17].m(ul1, t5);
           }
         }
 
-        for (; _i8 < each_blocks.length; _i8 += 1) {
-          each_blocks[_i8].d(1);
+        for (; _i17 < each_blocks.length; _i17 += 1) {
+          each_blocks[_i17].d(1);
         }
 
-        each_blocks.length = each_value_1.length;
+        each_blocks.length = each_value_3.length;
+      }
+
+      if (dirty &
+      /*$currentLanguage*/
+      4 && t7_value !== (t7_value =
+      /*$currentLanguage*/
+      ctx[2].caption + "")) set_data_dev(t7, t7_value);
+
+      if (
+      /*showLanguageMenu*/
+      ctx[1]) {
+        if (if_block0) {
+          if_block0.p(ctx, dirty);
+        } else {
+          if_block0 = create_if_block_1$2(ctx);
+          if_block0.c();
+          if_block0.m(li, null);
+        }
+      } else if (if_block0) {
+        if_block0.d(1);
+        if_block0 = null;
       }
 
       if (
       /*showMobileMenu*/
       ctx[0]) {
-        if (if_block) {
-          if_block.p(ctx, dirty);
+        if (if_block1) {
+          if_block1.p(ctx, dirty);
         } else {
-          if_block = create_if_block$4(ctx);
-          if_block.c();
-          if_block.m(div2, null);
+          if_block1 = create_if_block$4(ctx);
+          if_block1.c();
+          if_block1.m(div2, null);
         }
-      } else if (if_block) {
-        if_block.d(1);
-        if_block = null;
+      } else if (if_block1) {
+        if_block1.d(1);
+        if_block1 = null;
       }
     },
     i: noop,
@@ -5184,7 +5628,8 @@ function create_fragment$5(ctx) {
       if (detaching) detach_dev(t0);
       if (detaching) detach_dev(nav);
       destroy_each(each_blocks, detaching);
-      if (if_block) if_block.d();
+      if (if_block0) if_block0.d();
+      if (if_block1) if_block1.d();
       dispose();
     }
   };
@@ -5198,8 +5643,20 @@ function create_fragment$5(ctx) {
   return block;
 }
 
+function changeLanguage(lang) {
+  goto(lang.id).then(function () {
+    return location.reload();
+  });
+}
+
 function instance$5($$self, $$props, $$invalidate) {
+  var $currentLanguage;
+  validate_store(currentLanguage, "currentLanguage");
+  component_subscribe($$self, currentLanguage, function ($$value) {
+    return $$invalidate(2, $currentLanguage = $$value);
+  });
   var showMobileMenu = false;
+  var showLanguageMenu = false;
 
   function toggleMenu(e) {
     //  console.log(e);
@@ -5209,6 +5666,14 @@ function instance$5($$self, $$props, $$invalidate) {
       }
     } else {
       $$invalidate(0, showMobileMenu = false);
+    }
+
+    if (!showLanguageMenu) {
+      if (e.target.closest("#header-language-menu") !== null) {
+        $$invalidate(1, showLanguageMenu = true);
+      }
+    } else {
+      $$invalidate(1, showLanguageMenu = false);
     }
   }
 
@@ -5221,23 +5686,35 @@ function instance$5($$self, $$props, $$invalidate) {
       $$scope = $$props.$$scope;
   validate_slots("Nav", $$slots, []);
 
+  var click_handler = function click_handler(lang) {
+    return changeLanguage(lang);
+  };
+
   $$self.$capture_state = function () {
     return {
       config: data,
+      get: get_store_value,
+      goto: goto,
+      getLanguage: getLanguage,
+      currentLanguage: currentLanguage,
       showMobileMenu: showMobileMenu,
-      toggleMenu: toggleMenu
+      showLanguageMenu: showLanguageMenu,
+      toggleMenu: toggleMenu,
+      changeLanguage: changeLanguage,
+      $currentLanguage: $currentLanguage
     };
   };
 
   $$self.$inject_state = function ($$props) {
     if ("showMobileMenu" in $$props) $$invalidate(0, showMobileMenu = $$props.showMobileMenu);
+    if ("showLanguageMenu" in $$props) $$invalidate(1, showLanguageMenu = $$props.showLanguageMenu);
   };
 
   if ($$props && "$$inject" in $$props) {
     $$self.$inject_state($$props.$$inject);
   }
 
-  return [showMobileMenu, toggleMenu];
+  return [showMobileMenu, showLanguageMenu, $currentLanguage, toggleMenu, click_handler];
 }
 
 var Nav = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -5839,20 +6316,20 @@ function create_fragment$7(ctx) {
     },
     h: function hydrate() {
       attr_dev(div0, "class", "form-control col col-md-6 display-lg-down");
-      add_location(div0, file$7, 31, 12, 659);
+      add_location(div0, file$7, 31, 12, 676);
       attr_dev(div1, "class", "row");
-      add_location(div1, file$7, 30, 10, 629);
+      add_location(div1, file$7, 30, 10, 646);
       attr_dev(div2, "class", "col col-lg-9");
-      add_location(div2, file$7, 29, 8, 592);
+      add_location(div2, file$7, 29, 8, 609);
       attr_dev(div3, "class", "col col-lg-3 display-lg-up");
-      add_location(div3, file$7, 39, 8, 888);
+      add_location(div3, file$7, 39, 8, 905);
       attr_dev(div4, "class", "row row-reverse");
-      add_location(div4, file$7, 27, 6, 553);
+      add_location(div4, file$7, 27, 6, 570);
       attr_dev(div5, "class", "container");
-      add_location(div5, file$7, 26, 4, 523);
-      add_location(main, file$7, 25, 2, 512);
+      add_location(div5, file$7, 26, 4, 540);
+      add_location(main, file$7, 25, 2, 529);
       attr_dev(div6, "class", "page-container svelte-ggnltq");
-      add_location(div6, file$7, 23, 0, 471);
+      add_location(div6, file$7, 23, 0, 488);
     },
     m: function mount(target, anchor) {
       insert_dev(target, div6, anchor);
@@ -5945,6 +6422,7 @@ function instance$7($$self, $$props, $$invalidate) {
   $$self.$capture_state = function () {
     return {
       docs: docs,
+      currentLanguage: currentLanguage,
       get: get_store_value,
       flatDocs: flatDocs,
       Sidebar: Sidebar,
@@ -6786,15 +7264,20 @@ var App = /*#__PURE__*/function (_SvelteComponentDev) {
 }(SvelteComponentDev);
 
 // This file is generated by Sapper — do not edit it!
-var ignore = [/^\/index.json$/, /^\/([^\/]+?).json$/, /^\/([^\/]+?)\/([^\/]+?).json$/];
+var ignore = [/^\/index.json$/, /^\/([^\/]+?)\/([^\/]+?).json$/];
 var components = [{
   js: function js() {
-    return import('./index.7fbad87b.js');
+    return import('./index.5eae800a.js');
   },
   css: []
 }, {
   js: function js() {
-    return import('./[slug].a9af1a34.js');
+    return import('./index.2b1453ad.js');
+  },
+  css: []
+}, {
+  js: function js() {
+    return import('./[slug].351f3035.js');
   },
   css: []
 }];
@@ -6806,10 +7289,21 @@ var routes = function (d) {
       i: 0
     }]
   }, {
+    // [lang]/index.svelte
+    pattern: /^\/([^\/]+?)\/?$/,
+    parts: [{
+      i: 1,
+      params: function params(match) {
+        return {
+          lang: d(match[1])
+        };
+      }
+    }]
+  }, {
     // [lang]/[slug].svelte
     pattern: /^\/([^\/]+?)\/([^\/]+?)\/?$/,
     parts: [null, {
-      i: 1,
+      i: 2,
       params: function params(match) {
         return {
           lang: d(match[1]),
@@ -7591,4 +8085,4 @@ start({
   target: document.querySelector('#sapper')
 });
 
-export { _createClass as A, append_dev as B, SvelteComponentDev as S, _asyncToGenerator as _, regenerator as a, _inherits as b, _classCallCheck as c, _assertThisInitialized as d, dispatch_dev as e, data as f, get_store_value as g, docs as h, init as i, currentLanguage as j, _getPrototypeOf as k, _possibleConstructorReturn as l, space as m, element as n, detach_dev as o, claim_space as p, query_selector_all as q, claim_element as r, safe_not_equal as s, children as t, attr_dev as u, validate_slots as v, add_location as w, insert_dev as x, _slicedToArray as y, noop as z };
+export { noop as A, _createClass as B, append_dev as C, SvelteComponentDev as S, _asyncToGenerator as _, regenerator as a, _inherits as b, currentLanguage as c, _classCallCheck as d, _assertThisInitialized as e, dispatch_dev as f, getLanguage as g, data as h, init as i, docs as j, get_store_value as k, _getPrototypeOf as l, _possibleConstructorReturn as m, space as n, element as o, detach_dev as p, query_selector_all as q, claim_space as r, safe_not_equal as s, claim_element as t, children as u, validate_slots as v, attr_dev as w, add_location as x, insert_dev as y, _slicedToArray as z };

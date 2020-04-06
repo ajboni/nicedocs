@@ -1,4 +1,4 @@
-import { _ as _asyncToGenerator, a as _regeneratorRuntime, b as _inherits, c as _classCallCheck, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, A as _createClass, S as SvelteComponentDev, f as config, h as docs, v as validate_slots, k as _getPrototypeOf, l as _possibleConstructorReturn, n as element, m as space, q as query_selector_all, r as claim_element, t as children, o as detach_dev, p as claim_space, u as attr_dev, w as add_location, B as append_dev, x as insert_dev, y as _slicedToArray, z as noop } from './client.630d5263.js';
+import { _ as _asyncToGenerator, a as _regeneratorRuntime, g as getLanguage, c as currentLanguage, b as _inherits, d as _classCallCheck, i as init, s as safe_not_equal, e as _assertThisInitialized, f as dispatch_dev, B as _createClass, S as SvelteComponentDev, h as config, j as docs, k as get_store_value, v as validate_slots, l as _getPrototypeOf, m as _possibleConstructorReturn, o as element, n as space, q as query_selector_all, t as claim_element, u as children, p as detach_dev, r as claim_space, w as attr_dev, x as add_location, C as append_dev, y as insert_dev, z as _slicedToArray, A as noop } from './client.a8b026ca.js';
 
 function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
@@ -49,11 +49,11 @@ function create_fragment(ctx) {
     h: function hydrate() {
       attr_dev(link, "rel", "stylesheet");
       attr_dev(link, "href", "https://cdn.jsdelivr.net/npm/prismjs@1.19.0/themes/prism.min.css");
-      add_location(link, file, 64, 2, 1528);
+      add_location(link, file, 51, 2, 1219);
       if (script.src !== (script_src_value = "https://cdn.jsdelivr.net/npm/prismjs@1.19.0/prism.min.js")) attr_dev(script, "src", script_src_value);
-      add_location(script, file, 67, 2, 1636);
-      attr_dev(div, "class", "content svelte-h98meu");
-      add_location(div, file, 74, 0, 1768);
+      add_location(script, file, 54, 2, 1327);
+      attr_dev(div, "class", "content svelte-bqma9g");
+      add_location(div, file, 61, 0, 1459);
     },
     m: function mount(target, anchor) {
       append_dev(document.head, link);
@@ -99,25 +99,30 @@ function preload(_x) {
 
 function _preload() {
   _preload = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime.mark(function _callee(_ref3) {
-    var params, query, res, data;
+    var params, query, language, res, data;
     return _regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             params = _ref3.params, query = _ref3.query;
-            _context.next = 3;
+            // the `slug` parameter is available because
+            // this file is called [slug].svelte
+            language = getLanguage(params.lang);
+            currentLanguage.set(language);
+            _context.next = 5;
             return this.fetch("".concat(params.lang, "/").concat(params.slug, ".json"));
 
-          case 3:
+          case 5:
             res = _context.sent;
-            _context.next = 6;
+            _context.next = 8;
             return res.json();
 
-          case 6:
+          case 8:
             data = _context.sent;
+            data.lang = params.lang;
 
             if (!(res.status === 200)) {
-              _context.next = 11;
+              _context.next = 14;
               break;
             }
 
@@ -125,10 +130,10 @@ function _preload() {
               data: data
             });
 
-          case 11:
+          case 14:
             this.error(res.status, data.message);
 
-          case 12:
+          case 15:
           case "end":
             return _context.stop();
         }
@@ -140,9 +145,10 @@ function _preload() {
 
 function instance($$self, $$props, $$invalidate) {
   var data = $$props.data;
-  var doc = data.doc; // Fill up docs store, otherwise if user gets into the url directly, we wont get the sidebar.
-
   docs.set(data.docs);
+  currentLanguage.set(getLanguage(data.lang));
+  get_store_value(currentLanguage);
+  var doc = data.doc;
   var writable_props = ["data"];
   Object.keys($$props).forEach(function (key) {
     if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<U5Bslugu5D> was created with unknown prop '".concat(key, "'"));
@@ -158,9 +164,12 @@ function instance($$self, $$props, $$invalidate) {
 
   $$self.$capture_state = function () {
     return {
+      currentLanguage: currentLanguage,
+      getLanguage: getLanguage,
       preload: preload,
-      docs: docs,
       config: config,
+      docs: docs,
+      get: get_store_value,
       data: data,
       doc: doc
     };
