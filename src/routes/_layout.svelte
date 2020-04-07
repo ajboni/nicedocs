@@ -1,6 +1,6 @@
 <script>
   //   import { docs, flatDocs } from "./_docs";
-  import { docs, currentLanguage } from "../store";
+  import { docs, currentLanguage, docsMap } from "../store";
   import { get } from "svelte/store";
 
   //temps
@@ -11,6 +11,9 @@
   import Content from "./_content.svelte";
   import Nav from "./_nav.svelte";
   import Footer from "./_footer.svelte";
+
+  let currentLanguageDocs = get(docs)[get(currentLanguage).id];
+  let docMap = get(docsMap);
 </script>
 
 <style>
@@ -30,7 +33,9 @@
         <div class="col col-lg-9">
           <div class="row">
             <div class="form-control col col-md-6 display-lg-down">
-              <Sidebar docs={get(docs)} isMobile />
+              {#if currentLanguageDocs}
+                <Sidebar docs={currentLanguageDocs} isMobile />
+              {/if}
             </div>
           </div>
           <Content>
@@ -38,7 +43,9 @@
           </Content>
         </div>
         <div class="col col-lg-3 display-lg-up">
-          <Sidebar docs={get(docs)} />
+          {#if currentLanguageDocs}
+            <Sidebar docs={currentLanguageDocs} />
+          {/if}
         </div>
 
       </div>

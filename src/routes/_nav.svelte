@@ -26,6 +26,7 @@
   }
 
   function changeLanguage(lang) {
+    currentLanguage.set(lang);
     goto(lang.id).then(() => location.reload());
   }
 </script>
@@ -54,7 +55,7 @@
 <nav>
   <div class="nav-container" }>
     <div class="nav-logo">
-      <a href={$currentLanguage.id}>
+      <a href="/">
         <img src={config.projectLogo} alt="nicedocs-logo" />
         <span>{config.projectName}</span>
       </a>
@@ -78,14 +79,10 @@
         <button
           id="header-language-menu"
           type="button"
-          class="nav-dropdown-menu-label"
-          aria-haspopup="true"
-          aria-owns="language-menu"
-          aria-label="Current language is English. Choose your preferred
-          language.">
+          class="nav-dropdown-menu-label">
           <span class="fa fa-language" style="margin-right: .5rem;" />
-          <!-- {$currentLanguage.caption} &nbsp; -->
           {$currentLanguage.caption} &nbsp;
+          <!-- language -->
           <span class="dropdown-arrow-down" aria-hidden="true">▼</span>
         </button>
 

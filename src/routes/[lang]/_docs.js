@@ -1,7 +1,8 @@
 import fs from 'fs';
 import * as matter from 'gray-matter';
 import config from "../../config.yaml";
-import { getLanguage, currentLanguage } from '../../store.js'
+import { getLanguage, docsMap } from '../../store.js'
+import { get } from "svelte/store";
 
 export let docs = [];
 
@@ -13,11 +14,25 @@ const mark = require('markdown-it-mark');
 const anchor = require('markdown-it-anchor');
 
 
-export function LoadDocs(lang) {
+export function LoadDocs(lang = "all") {
 	// Set the store value
-	currentLanguage.set(lang)
-	let loadedDocs = [];
-	let path = './docs/' + lang.id;
+	let loadedDocs = {};
+	let availableLanguages = [];
+
+	if (lang === "all") {
+		availableLanguages = config.availableLanguages;
+	}
+	else {
+		availableLanguages.push(lang);
+	}
+
+	availableLanguages.forEach(lang => {
+		let path = './docs/' + lang.id;
+		loadedDocs[lang.id] = loadDocsRecursively(path, lang);
+	});
+
+	return loadedDocs;
+
 
 	// if (!fs.existsSync(path)) {
 	// 	// If language fails, fallback and make a new check for default language. 
@@ -31,7 +46,7 @@ export function LoadDocs(lang) {
 	// 	}
 	// }
 
-	loadedDocs = loadDocsRecursively(path, lang);
+
 
 
 	// Following levels are just folders
@@ -42,10 +57,9 @@ export function LoadDocs(lang) {
 	// 	matterPost.excerpt = marked(matterPost.excerpt)
 	// 	posts.push(matterPost);
 
-	return loadedDocs;
 }
 
-function loadDocsRecursively(path, lang, level = 0) {
+export function loadDocsRecursively(path, lang, level = 0) {
 	const loadedDocs = fs.readdirSync(path);
 	let docs = [];
 
@@ -66,8 +80,10 @@ function loadDocsRecursively(path, lang, level = 0) {
 		}
 		else {
 			obj.type = "file";
-			obj.slug = lang.id + "/" + slugify(formatTitle(docFile))
-			obj.content = parseContent(fs.readFileSync(path + "/" + docFile).toString(), slugify(formatTitle(docFile)))
+			obj.slug = generateSlug(path + "/" + docFile);
+			obj.content = parseContent(fs.readFileSync(path + "/" + docFile).toString(), generateSlug(path + "/" + docFile));
+			// docsMap.set(obj.slug, obj)
+			get(docsMap).set(obj.slug, obj)
 		}
 		docs.push(obj);
 	})
@@ -93,6 +109,20 @@ function parseContent(content, slug) {
 	content = md.render(content);
 	return content;
 
+}
+
+function generateSlug(path) {
+	const slug = path.replace("./docs/", "").replace(".md", "");
+	let newSlug = []
+	let slugChunks = slug.split("/");
+
+	for (let index = 0; index < slugChunks.length; index++) {
+		let s = slugChunks[index];
+		s = slugify(s.split("__").pop())
+		newSlug.push(s)
+	}
+
+	return newSlug.join('/');
 }
 
 function formatTitle(name) {

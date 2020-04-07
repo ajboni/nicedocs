@@ -1,5 +1,6 @@
 <script context="module">
-  import { currentLanguage, getLanguage } from "../../store";
+  import { getLanguage, currentLanguage, docs } from "../../store";
+  import { get } from "svelte/store";
   export async function preload({ params, query }) {
     // the `slug` parameter is available because
     // this file is called [slug].svelte
@@ -7,9 +8,19 @@
     const language = getLanguage(params.lang);
     currentLanguage.set(language);
 
+    // We need to fetch everything if the user is coming from URL.
+    const resDocs = await this.fetch(`index.json`);
+    let docsJSON = await resDocs.json();
+    docs.set(docsJSON);
+
     const res = await this.fetch(`${params.lang}/${params.slug}.json`);
-    let data = await res.json();
-    data.lang = params.lang;
+    let doc = await res.json();
+
+    const data = {
+      doc: doc
+    };
+
+    //  data.lang = params.lang;
 
     if (res.status === 200) {
       return { data };
@@ -21,15 +32,8 @@
 
 <script>
   import config from "../../config.yaml";
-  import { docs } from "../../store";
-  import { get } from "svelte/store";
   export let data;
-  docs.set(data.docs);
-  currentLanguage.set(getLanguage(data.lang));
-  get(currentLanguage);
-
   const doc = data.doc;
-  // Fill up docs store, otherwise if user gets into the url directly, we wont get the sidebar.
 </script>
 
 <style>
