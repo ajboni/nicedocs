@@ -27,7 +27,7 @@
 
   function changeLanguage(lang) {
     currentLanguage.set(lang);
-    goto(lang.id).then(() => location.reload());
+    goto(lang.id + "/index").then(() => location.reload());
   }
 </script>
 

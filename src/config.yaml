@@ -17,9 +17,9 @@ availableLanguages:
   - id: spa
     icon: "fa fa-user"
     caption: "Español"
-  - id: zzz
+  - id: fr
     icon: "fa fa-user"
-    caption: "ZZZ"
+    caption: "French"
 
 # Links for the navbar
 navigation:

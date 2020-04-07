@@ -1,5 +1,6 @@
 import { writable, derived, get } from "svelte/store";
 import config from "./config.yaml";
+export let doc = writable({});
 export let docs = writable([]);
 export let docsMap = writable(new Map());
 export let currentLanguage = writable(getLanguage("default"))

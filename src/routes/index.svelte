@@ -32,7 +32,7 @@
     if (res.status === 200) {
       docs.set(json);
     } else {
-      this.error(res.status, data.message);
+      this.error(res.status, json.message);
     }
   }
 </script>
