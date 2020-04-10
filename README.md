@@ -1,8 +1,12 @@
 # NICEDOCS
 A really simple static documentation generator powerded by [sapper](https://sapper.svelte.dev), [svelte](https://svelte.dev) and [mustard-ui](https://github.com/kylelogue/mustard-ui)
 
+Demo:
+https://nicedocs.aboni.dev
+
 This project is WIP: To see its progress go to: 
 https://github.com/ajboni/nicedocs/projects/1
+
 
 ## DEVELOPMENT
 
