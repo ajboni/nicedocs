@@ -27,7 +27,11 @@
 
   function changeLanguage(lang) {
     currentLanguage.set(lang);
-    goto(lang.id).then(() => location.reload());
+    goto(lang.id + "/home").then(() => location.reload());
+  }
+
+  function goHome() {
+    goto(get(currentLanguage).id + "/home").then(() => location.reload());
   }
 </script>
 
@@ -55,10 +59,10 @@
 <nav>
   <div class="nav-container" }>
     <div class="nav-logo">
-      <a href="/">
+      <span style={'cursor: pointer'} on:click={() => goHome()}>
         <img src={config.projectLogo} alt="nicedocs-logo" />
         <span>{config.projectName}</span>
-      </a>
+      </span>
     </div>
 
     <ul class="nav-links" />

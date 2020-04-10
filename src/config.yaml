@@ -2,8 +2,11 @@
 projectName: Nice Docs
 projectLogo: "book.svg"
 
-# Index document to load when the usear reach root URL. Should be the same for every language.
+# Index document to load when the user reach root URL. Should be the same for every language.
 indexDocument: ".index"
+
+# Landing slug for each languaga. Unfortunately we cannot use /lang/index or /lang so we use /lang/home by default
+landingSlug: "home"
 
 # Default language for the site, used when user reach root URL without /lang/ slug.  
 # Must be the same name as the root folder of docs.

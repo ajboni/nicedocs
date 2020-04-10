@@ -18,3 +18,8 @@
 {#each slugs as slug}
   <a href={slug}>{slug}</a>
 {/each}
+
+{#each config.availableLanguages as lang}
+  <a href={`${lang.id}/${config.landingSlug}`}>{lang.id}</a>
+  <!-- content here -->
+{/each}

@@ -1,5 +1,5 @@
-import { LoadDocs } from './[lang]/_docs.js';
-import { getLanguage, docs, docsMap } from '../store.js'
+import { LoadDocs } from './_docs.js';
+import { getLanguage, docs, docsMap } from '../../store.js'
 import { get as g } from "svelte/store";
 
 

@@ -1,5 +1,5 @@
 <script context="module">
-  import { getLanguage, currentLanguage, docs, doc } from "../store";
+  import { getLanguage, currentLanguage, docs, doc } from "../../store";
   import { get } from "svelte/store";
   export async function preload({ params, query }) {
     // the `slug` parameter is available because
@@ -29,11 +29,11 @@
 </script>
 
 <script>
-  import config from "../config.yaml";
+  import config from "../../config.yaml";
 </script>
 
 <svelte:head>
-  <title>{$doc.title} | {config.projectName}</title>
+  <title>{config.projectName}</title>
 </svelte:head>
 
 <div class="content">
