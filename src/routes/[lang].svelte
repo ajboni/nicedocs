@@ -1,5 +1,5 @@
 <script context="module">
-  import { getLanguage, currentLanguage, docs, doc } from "../../store";
+  import { getLanguage, currentLanguage, docs, doc } from "../store";
   import { get } from "svelte/store";
   export async function preload({ params, query }) {
     // the `slug` parameter is available because
@@ -17,31 +17,23 @@
     // Set up the current doc in the store.
     // TODO: Why If I return the doc to the component instead of going to the store
     // it force a rerender and loose store state (current language and sidebar)...
-    const res = await this.fetch(
-      `${params.lang}/${params.slug.join("/")}.json`
-    );
+    const res = await this.fetch(`${params.lang}/index.json`);
     let docJSON = await res.json();
+
     if (res.status === 200) {
       doc.set(docJSON);
     } else {
       this.error(res.status, docJSON.message);
     }
   }
-  //  data.lang = params.lang;
 </script>
 
 <script>
-  import config from "../../config.yaml";
+  import config from "../config.yaml";
 </script>
 
 <svelte:head>
   <title>{$doc.title} | {config.projectName}</title>
-  <link
-    rel="stylesheet"
-    href="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/themes/prism.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.19.0/prism.min.js">
-
-  </script>
 </svelte:head>
 
 <div class="content">
