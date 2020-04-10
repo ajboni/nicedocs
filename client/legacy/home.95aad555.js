@@ -1,9 +1,9 @@
-import { _ as _asyncToGenerator, a as _regeneratorRuntime, g as docs, j as getLanguage, L as currentLanguage, b as _inherits, c as _classCallCheck, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, S as SvelteComponentDev, f as config, M as doc, N as validate_store, O as component_subscribe, v as validate_slots, h as get_store_value, k as _getPrototypeOf, l as _possibleConstructorReturn, m as space, n as element, q as query_selector_all, o as detach_dev, p as claim_space, r as claim_element, t as children, u as attr_dev, w as add_location, x as insert_dev, y as _slicedToArray, z as noop } from './client.c7770aee.js';
+import { _ as _asyncToGenerator, a as _regeneratorRuntime, g as docs, j as getLanguage, L as currentLanguage, b as _inherits, c as _classCallCheck, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, S as SvelteComponentDev, f as config, M as doc, N as validate_store, O as component_subscribe, v as validate_slots, h as get_store_value, k as _getPrototypeOf, l as _possibleConstructorReturn, m as space, n as element, q as query_selector_all, o as detach_dev, p as claim_space, r as claim_element, t as children, u as attr_dev, w as add_location, x as insert_dev, y as _slicedToArray, z as noop } from './client.7eff8823.js';
 
 function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-var file = "src/routes/[lang].svelte";
+var file = "src/routes/[lang]/home.svelte";
 
 function create_fragment(ctx) {
   var title_value;
@@ -12,9 +12,7 @@ function create_fragment(ctx) {
   var raw_value =
   /*$doc*/
   ctx[0].content + "";
-  document.title = title_value = "" + (
-  /*$doc*/
-  ctx[0].title + " | " + config.projectName);
+  document.title = title_value = config.projectName;
   var block = {
     c: function create() {
       t = space();
@@ -22,7 +20,7 @@ function create_fragment(ctx) {
       this.h();
     },
     l: function claim(nodes) {
-      var head_nodes = query_selector_all("[data-svelte=\"svelte-13feyxl\"]", document.head);
+      var head_nodes = query_selector_all("[data-svelte=\"svelte-ncv0v3\"]", document.head);
       head_nodes.forEach(detach_dev);
       t = claim_space(nodes);
       div = claim_element(nodes, "DIV", {
@@ -34,7 +32,7 @@ function create_fragment(ctx) {
     },
     h: function hydrate() {
       attr_dev(div, "class", "content");
-      add_location(div, file, 38, 0, 1188);
+      add_location(div, file, 38, 0, 1179);
     },
     m: function mount(target, anchor) {
       insert_dev(target, t, anchor);
@@ -46,10 +44,8 @@ function create_fragment(ctx) {
           dirty = _ref2[0];
 
       if (dirty &
-      /*$doc, config*/
-      1 && title_value !== (title_value = "" + (
-      /*$doc*/
-      ctx[0].title + " | " + config.projectName))) {
+      /*config*/
+      0 && title_value !== (title_value = config.projectName)) {
         document.title = title_value;
       }
 
@@ -143,12 +139,12 @@ function instance($$self, $$props, $$invalidate) {
   });
   var writable_props = [];
   Object.keys($$props).forEach(function (key) {
-    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<U5Blangu5D> was created with unknown prop '".concat(key, "'"));
+    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<Home> was created with unknown prop '".concat(key, "'"));
   });
   var _$$props$$$slots = $$props.$$slots,
       $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
       $$scope = $$props.$$scope;
-  validate_slots("U5Blangu5D", $$slots, []);
+  validate_slots("Home", $$slots, []);
 
   $$self.$capture_state = function () {
     return {
@@ -166,29 +162,29 @@ function instance($$self, $$props, $$invalidate) {
   return [$doc];
 }
 
-var U5Blangu5D = /*#__PURE__*/function (_SvelteComponentDev) {
-  _inherits(U5Blangu5D, _SvelteComponentDev);
+var Home = /*#__PURE__*/function (_SvelteComponentDev) {
+  _inherits(Home, _SvelteComponentDev);
 
-  var _super = _createSuper(U5Blangu5D);
+  var _super = _createSuper(Home);
 
-  function U5Blangu5D(options) {
+  function Home(options) {
     var _this;
 
-    _classCallCheck(this, U5Blangu5D);
+    _classCallCheck(this, Home);
 
     _this = _super.call(this, options);
     init(_assertThisInitialized(_this), options, instance, create_fragment, safe_not_equal, {});
     dispatch_dev("SvelteRegisterComponent", {
       component: _assertThisInitialized(_this),
-      tagName: "U5Blangu5D",
+      tagName: "Home",
       options: options,
       id: create_fragment.name
     });
     return _this;
   }
 
-  return U5Blangu5D;
+  return Home;
 }(SvelteComponentDev);
 
-export default U5Blangu5D;
+export default Home;
 export { preload };

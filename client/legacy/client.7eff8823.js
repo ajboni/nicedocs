@@ -1736,6 +1736,7 @@ var preload = function preload() {
 var data = { projectName:"Nice Docs",
   projectLogo:"book.svg",
   indexDocument:".index",
+  landingSlug:"home",
   defaultLanguage:"eng",
   availableLanguages:[ { id:"eng",
       icon:"fa fa-user",
@@ -4762,27 +4763,27 @@ var file$5 = "src/routes/_nav.svelte";
 
 function get_each_context$2(ctx, list, i) {
   var child_ctx = ctx.slice();
-  child_ctx[5] = list[i];
+  child_ctx[6] = list[i];
   return child_ctx;
 }
 
 function get_each_context_1$2(ctx, list, i) {
   var child_ctx = ctx.slice();
-  child_ctx[8] = list[i];
+  child_ctx[9] = list[i];
   return child_ctx;
 }
 
 function get_each_context_2(ctx, list, i) {
   var child_ctx = ctx.slice();
-  child_ctx[5] = list[i];
+  child_ctx[6] = list[i];
   return child_ctx;
 }
 
 function get_each_context_3(ctx, list, i) {
   var child_ctx = ctx.slice();
-  child_ctx[8] = list[i];
+  child_ctx[9] = list[i];
   return child_ctx;
-} // (68:6) {#each config.navigation as nav}
+} // (72:6) {#each config.navigation as nav}
 
 
 function create_each_block_3(ctx) {
@@ -4793,7 +4794,7 @@ function create_each_block_3(ctx) {
   var t0;
   var t1_value =
   /*nav*/
-  ctx[8].caption + "";
+  ctx[9].caption + "";
   var t1;
   var a_href_value;
   var block = {
@@ -4827,15 +4828,15 @@ function create_each_block_3(ctx) {
     h: function hydrate() {
       attr_dev(span, "class", span_class_value = "" + (null_to_empty(
       /*nav*/
-      ctx[8].icon) + " svelte-gbajag"));
+      ctx[9].icon) + " svelte-gbajag"));
       set_style(span, "margin-right", ".5rem");
-      add_location(span, file$5, 71, 12, 1460);
+      add_location(span, file$5, 75, 12, 1621);
       attr_dev(a, "href", a_href_value =
       /*nav*/
-      ctx[8].url);
+      ctx[9].url);
       attr_dev(a, "target", "_blank");
-      add_location(a, file$5, 70, 10, 1413);
-      add_location(li, file$5, 68, 8, 1397);
+      add_location(a, file$5, 74, 10, 1574);
+      add_location(li, file$5, 72, 8, 1558);
     },
     m: function mount(target, anchor) {
       insert_dev(target, li, anchor);
@@ -4853,11 +4854,11 @@ function create_each_block_3(ctx) {
     block: block,
     id: create_each_block_3.name,
     type: "each",
-    source: "(68:6) {#each config.navigation as nav}",
+    source: "(72:6) {#each config.navigation as nav}",
     ctx: ctx
   });
   return block;
-} // (89:8) {#if showLanguageMenu}
+} // (93:8) {#if showLanguageMenu}
 
 
 function create_if_block_1$2(ctx) {
@@ -4899,7 +4900,7 @@ function create_if_block_1$2(ctx) {
       attr_dev(ul, "id", "language-menu");
       attr_dev(ul, "class", "nav-dropdown-menu-items right");
       attr_dev(ul, "role", "menu");
-      add_location(ul, file$5, 90, 10, 2053);
+      add_location(ul, file$5, 94, 10, 2214);
     },
     m: function mount(target, anchor) {
       insert_dev(target, ul, anchor);
@@ -4947,11 +4948,11 @@ function create_if_block_1$2(ctx) {
     block: block,
     id: create_if_block_1$2.name,
     type: "if",
-    source: "(89:8) {#if showLanguageMenu}",
+    source: "(93:8) {#if showLanguageMenu}",
     ctx: ctx
   });
   return block;
-} // (95:12) {#each config.availableLanguages as lang}
+} // (99:12) {#each config.availableLanguages as lang}
 
 
 function create_each_block_2(ctx) {
@@ -4959,13 +4960,13 @@ function create_each_block_2(ctx) {
   var div;
   var t0_value =
   /*lang*/
-  ctx[5].caption + "";
+  ctx[6].caption + "";
   var t0;
   var div_style_value;
   var t1;
   var dispose;
 
-  function click_handler() {
+  function click_handler_1() {
     var _ctx;
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
@@ -4973,10 +4974,10 @@ function create_each_block_2(ctx) {
     }
 
     return (
-      /*click_handler*/
-      (_ctx = ctx)[4].apply(_ctx, [
+      /*click_handler_1*/
+      (_ctx = ctx)[5].apply(_ctx, [
       /*lang*/
-      ctx[5]].concat(args))
+      ctx[6]].concat(args))
     );
   }
 
@@ -5005,9 +5006,9 @@ function create_each_block_2(ctx) {
     },
     h: function hydrate() {
       attr_dev(div, "style", div_style_value = "cursor:pointer");
-      add_location(div, file$5, 97, 16, 2335);
+      add_location(div, file$5, 101, 16, 2496);
       attr_dev(li, "class", "nav-menuitem");
-      add_location(li, file$5, 95, 14, 2231);
+      add_location(li, file$5, 99, 14, 2392);
     },
     m: function mount(target, anchor, remount) {
       insert_dev(target, li, anchor);
@@ -5015,7 +5016,7 @@ function create_each_block_2(ctx) {
       append_dev(div, t0);
       append_dev(li, t1);
       if (remount) dispose();
-      dispose = listen_dev(div, "click", click_handler, false, false, false);
+      dispose = listen_dev(div, "click", click_handler_1, false, false, false);
     },
     p: function update(new_ctx, dirty) {
       ctx = new_ctx;
@@ -5029,11 +5030,11 @@ function create_each_block_2(ctx) {
     block: block,
     id: create_each_block_2.name,
     type: "each",
-    source: "(95:12) {#each config.availableLanguages as lang}",
+    source: "(99:12) {#each config.availableLanguages as lang}",
     ctx: ctx
   });
   return block;
-} // (111:4) {#if showMobileMenu}
+} // (115:4) {#if showMobileMenu}
 
 
 function create_if_block$4(ctx) {
@@ -5092,7 +5093,7 @@ function create_if_block$4(ctx) {
     },
     h: function hydrate() {
       attr_dev(ul, "class", "mobile-menu menu svelte-gbajag");
-      add_location(ul, file$5, 111, 6, 2659);
+      add_location(ul, file$5, 115, 6, 2820);
     },
     m: function mount(target, anchor) {
       insert_dev(target, ul, anchor);
@@ -5176,11 +5177,11 @@ function create_if_block$4(ctx) {
     block: block,
     id: create_if_block$4.name,
     type: "if",
-    source: "(111:4) {#if showMobileMenu}",
+    source: "(115:4) {#if showMobileMenu}",
     ctx: ctx
   });
   return block;
-} // (113:8) {#each config.navigation as nav}
+} // (117:8) {#each config.navigation as nav}
 
 
 function create_each_block_1$2(ctx) {
@@ -5188,7 +5189,7 @@ function create_each_block_1$2(ctx) {
   var a;
   var t_value =
   /*nav*/
-  ctx[8].caption + "";
+  ctx[9].caption + "";
   var t;
   var a_href_value;
   var block = {
@@ -5214,10 +5215,10 @@ function create_each_block_1$2(ctx) {
     h: function hydrate() {
       attr_dev(a, "href", a_href_value =
       /*nav*/
-      ctx[8].url);
+      ctx[9].url);
       attr_dev(a, "target", "_blank");
-      add_location(a, file$5, 114, 12, 2757);
-      add_location(li, file$5, 113, 10, 2740);
+      add_location(a, file$5, 118, 12, 2918);
+      add_location(li, file$5, 117, 10, 2901);
     },
     m: function mount(target, anchor) {
       insert_dev(target, li, anchor);
@@ -5233,11 +5234,11 @@ function create_each_block_1$2(ctx) {
     block: block,
     id: create_each_block_1$2.name,
     type: "each",
-    source: "(113:8) {#each config.navigation as nav}",
+    source: "(117:8) {#each config.navigation as nav}",
     ctx: ctx
   });
   return block;
-} // (120:8) {#each config.availableLanguages as lang}
+} // (124:8) {#each config.availableLanguages as lang}
 
 
 function create_each_block$2(ctx) {
@@ -5245,7 +5246,7 @@ function create_each_block$2(ctx) {
   var a;
   var t0_value =
   /*lang*/
-  ctx[5].caption + "";
+  ctx[6].caption + "";
   var t0;
   var t1;
   var dispose;
@@ -5274,8 +5275,8 @@ function create_each_block$2(ctx) {
     h: function hydrate() {
       attr_dev(a, "href", "#");
       attr_dev(a, "title", "Catalan");
-      add_location(a, file$5, 121, 12, 2920);
-      add_location(li, file$5, 120, 10, 2903);
+      add_location(a, file$5, 125, 12, 3081);
+      add_location(li, file$5, 124, 10, 3064);
     },
     m: function mount(target, anchor, remount) {
       insert_dev(target, li, anchor);
@@ -5285,7 +5286,7 @@ function create_each_block$2(ctx) {
       if (remount) dispose();
       dispose = listen_dev(a, "click", changeLanguage(
       /*lang*/
-      ctx[5]), false, false, false);
+      ctx[6]), false, false, false);
     },
     p: function update(new_ctx, dirty) {
       ctx = new_ctx;
@@ -5299,7 +5300,7 @@ function create_each_block$2(ctx) {
     block: block,
     id: create_each_block$2.name,
     type: "each",
-    source: "(120:8) {#each config.availableLanguages as lang}",
+    source: "(124:8) {#each config.availableLanguages as lang}",
     ctx: ctx
   });
   return block;
@@ -5310,13 +5311,14 @@ function create_fragment$5(ctx) {
   var nav;
   var div2;
   var div0;
-  var a;
+  var span1;
   var img;
   var img_src_value;
   var t1;
   var span0;
   var t2_value = data.projectName + "";
   var t2;
+  var span1_style_value;
   var t3;
   var ul0;
   var t4;
@@ -5324,14 +5326,14 @@ function create_fragment$5(ctx) {
   var t5;
   var li;
   var button;
-  var span1;
+  var span2;
   var t6;
   var t7_value =
   /*$currentLanguage*/
   ctx[2].caption + "";
   var t7;
   var t8;
-  var span2;
+  var span3;
   var t9;
   var t10;
   var t11;
@@ -5358,7 +5360,7 @@ function create_fragment$5(ctx) {
       nav = element("nav");
       div2 = element("div");
       div0 = element("div");
-      a = element("a");
+      span1 = element("span");
       img = element("img");
       t1 = space();
       span0 = element("span");
@@ -5375,11 +5377,11 @@ function create_fragment$5(ctx) {
       t5 = space();
       li = element("li");
       button = element("button");
-      span1 = element("span");
+      span2 = element("span");
       t6 = space();
       t7 = text(t7_value);
       t8 = text("  \n          \n          ");
-      span2 = element("span");
+      span3 = element("span");
       t9 = text("▼");
       t10 = space();
       if (if_block0) if_block0.c();
@@ -5402,22 +5404,21 @@ function create_fragment$5(ctx) {
         class: true
       });
       var div0_nodes = children(div0);
-      a = claim_element(div0_nodes, "A", {
-        href: true,
-        class: true
+      span1 = claim_element(div0_nodes, "SPAN", {
+        style: true
       });
-      var a_nodes = children(a);
-      img = claim_element(a_nodes, "IMG", {
+      var span1_nodes = children(span1);
+      img = claim_element(span1_nodes, "IMG", {
         src: true,
         alt: true,
         class: true
       });
-      t1 = claim_space(a_nodes);
-      span0 = claim_element(a_nodes, "SPAN", {});
+      t1 = claim_space(span1_nodes);
+      span0 = claim_element(span1_nodes, "SPAN", {});
       var span0_nodes = children(span0);
       t2 = claim_text(span0_nodes, t2_value);
       span0_nodes.forEach(detach_dev);
-      a_nodes.forEach(detach_dev);
+      span1_nodes.forEach(detach_dev);
       div0_nodes.forEach(detach_dev);
       t3 = claim_space(div2_nodes);
       ul0 = claim_element(div2_nodes, "UL", {
@@ -5445,21 +5446,21 @@ function create_fragment$5(ctx) {
         class: true
       });
       var button_nodes = children(button);
-      span1 = claim_element(button_nodes, "SPAN", {
+      span2 = claim_element(button_nodes, "SPAN", {
         class: true,
         style: true
       });
-      children(span1).forEach(detach_dev);
+      children(span2).forEach(detach_dev);
       t6 = claim_space(button_nodes);
       t7 = claim_text(button_nodes, t7_value);
       t8 = claim_text(button_nodes, "  \n          \n          ");
-      span2 = claim_element(button_nodes, "SPAN", {
+      span3 = claim_element(button_nodes, "SPAN", {
         class: true,
         "aria-hidden": true
       });
-      var span2_nodes = children(span2);
-      t9 = claim_text(span2_nodes, "▼");
-      span2_nodes.forEach(detach_dev);
+      var span3_nodes = children(span3);
+      t9 = claim_text(span3_nodes, "▼");
+      span3_nodes.forEach(detach_dev);
       button_nodes.forEach(detach_dev);
       t10 = claim_space(li_nodes);
       if (if_block0) if_block0.l(li_nodes);
@@ -5480,45 +5481,44 @@ function create_fragment$5(ctx) {
       if (img.src !== (img_src_value = data.projectLogo)) attr_dev(img, "src", img_src_value);
       attr_dev(img, "alt", "nicedocs-logo");
       attr_dev(img, "class", "svelte-gbajag");
-      add_location(img, file$5, 58, 8, 1174);
-      add_location(span0, file$5, 59, 8, 1235);
-      attr_dev(a, "href", "/");
-      attr_dev(a, "class", "svelte-gbajag");
-      add_location(a, file$5, 57, 6, 1153);
+      add_location(img, file$5, 62, 8, 1332);
+      add_location(span0, file$5, 63, 8, 1393);
+      attr_dev(span1, "style", span1_style_value = "cursor: pointer");
+      add_location(span1, file$5, 61, 6, 1265);
       attr_dev(div0, "class", "nav-logo svelte-gbajag");
-      add_location(div0, file$5, 56, 4, 1124);
+      add_location(div0, file$5, 60, 4, 1236);
       attr_dev(ul0, "class", "nav-links");
-      add_location(ul0, file$5, 63, 4, 1296);
-      attr_dev(span1, "class", "fa fa-language");
-      set_style(span1, "margin-right", ".5rem");
-      add_location(span1, file$5, 82, 10, 1756);
-      attr_dev(span2, "class", "dropdown-arrow-down");
-      attr_dev(span2, "aria-hidden", "true");
-      add_location(span2, file$5, 85, 10, 1899);
+      add_location(ul0, file$5, 67, 4, 1457);
+      attr_dev(span2, "class", "fa fa-language");
+      set_style(span2, "margin-right", ".5rem");
+      add_location(span2, file$5, 86, 10, 1917);
+      attr_dev(span3, "class", "dropdown-arrow-down");
+      attr_dev(span3, "aria-hidden", "true");
+      add_location(span3, file$5, 89, 10, 2060);
       attr_dev(button, "id", "header-language-menu");
       attr_dev(button, "type", "button");
       attr_dev(button, "class", "nav-dropdown-menu-label");
-      add_location(button, file$5, 78, 8, 1635);
+      add_location(button, file$5, 82, 8, 1796);
       attr_dev(li, "class", "nav-dropdown-container");
-      add_location(li, file$5, 77, 6, 1591);
+      add_location(li, file$5, 81, 6, 1752);
       attr_dev(ul1, "class", "nav-links");
-      add_location(ul1, file$5, 65, 4, 1326);
+      add_location(ul1, file$5, 69, 4, 1487);
       attr_dev(div1, "class", "mobile-menu-toggle");
-      add_location(div1, file$5, 109, 4, 2593);
+      add_location(div1, file$5, 113, 4, 2754);
       attr_dev(div2, "class", "nav-container");
       attr_dev(div2, "}", "");
-      add_location(div2, file$5, 55, 2, 1090);
-      add_location(nav, file$5, 54, 0, 1082);
+      add_location(div2, file$5, 59, 2, 1202);
+      add_location(nav, file$5, 58, 0, 1194);
     },
     m: function mount(target, anchor, remount) {
       insert_dev(target, t0, anchor);
       insert_dev(target, nav, anchor);
       append_dev(nav, div2);
       append_dev(div2, div0);
-      append_dev(div0, a);
-      append_dev(a, img);
-      append_dev(a, t1);
-      append_dev(a, span0);
+      append_dev(div0, span1);
+      append_dev(span1, img);
+      append_dev(span1, t1);
+      append_dev(span1, span0);
       append_dev(span0, t2);
       append_dev(div2, t3);
       append_dev(div2, ul0);
@@ -5532,22 +5532,24 @@ function create_fragment$5(ctx) {
       append_dev(ul1, t5);
       append_dev(ul1, li);
       append_dev(li, button);
-      append_dev(button, span1);
+      append_dev(button, span2);
       append_dev(button, t6);
       append_dev(button, t7);
       append_dev(button, t8);
-      append_dev(button, span2);
-      append_dev(span2, t9);
+      append_dev(button, span3);
+      append_dev(span3, t9);
       append_dev(li, t10);
       if (if_block0) if_block0.m(li, null);
       append_dev(div2, t11);
       append_dev(div2, div1);
       append_dev(div2, t12);
       if (if_block1) if_block1.m(div2, null);
-      if (remount) dispose();
-      dispose = listen_dev(document.body, "click",
+      if (remount) run_all(dispose);
+      dispose = [listen_dev(document.body, "click",
       /*toggleMenu*/
-      ctx[3], false, false, false);
+      ctx[3], false, false, false), listen_dev(span1, "click",
+      /*click_handler*/
+      ctx[4], false, false, false)];
     },
     p: function update(ctx, _ref) {
       var _ref2 = _slicedToArray(_ref, 1),
@@ -5626,7 +5628,7 @@ function create_fragment$5(ctx) {
       destroy_each(each_blocks, detaching);
       if (if_block0) if_block0.d();
       if (if_block1) if_block1.d();
-      dispose();
+      run_all(dispose);
     }
   };
   dispatch_dev("SvelteRegisterBlock", {
@@ -5641,7 +5643,13 @@ function create_fragment$5(ctx) {
 
 function changeLanguage(lang) {
   currentLanguage.set(lang);
-  goto(lang.id).then(function () {
+  goto(lang.id + "/home").then(function () {
+    return location.reload();
+  });
+}
+
+function goHome() {
+  goto(get_store_value(currentLanguage).id + "/home").then(function () {
     return location.reload();
   });
 }
@@ -5683,7 +5691,11 @@ function instance$5($$self, $$props, $$invalidate) {
       $$scope = $$props.$$scope;
   validate_slots("Nav", $$slots, []);
 
-  var click_handler = function click_handler(lang) {
+  var click_handler = function click_handler() {
+    return goHome();
+  };
+
+  var click_handler_1 = function click_handler_1(lang) {
     return changeLanguage(lang);
   };
 
@@ -5698,6 +5710,7 @@ function instance$5($$self, $$props, $$invalidate) {
       showLanguageMenu: showLanguageMenu,
       toggleMenu: toggleMenu,
       changeLanguage: changeLanguage,
+      goHome: goHome,
       $currentLanguage: $currentLanguage
     };
   };
@@ -5711,7 +5724,7 @@ function instance$5($$self, $$props, $$invalidate) {
     $$self.$inject_state($$props.$$inject);
   }
 
-  return [showMobileMenu, showLanguageMenu, $currentLanguage, toggleMenu, click_handler];
+  return [showMobileMenu, showLanguageMenu, $currentLanguage, toggleMenu, click_handler, click_handler_1];
 }
 
 var Nav = /*#__PURE__*/function (_SvelteComponentDev) {
@@ -7360,25 +7373,25 @@ var App = /*#__PURE__*/function (_SvelteComponentDev) {
 }(SvelteComponentDev);
 
 // This file is generated by Sapper — do not edit it!
-var ignore = [/^\/index.json$/, /^\/crawler\/crawler.json$/, /^\/([^\/]+?).json$/, /^\/([^\/]+?)\/(.+).json$/];
+var ignore = [/^\/index.json$/, /^\/crawler\/crawler.json$/, /^\/([^\/]+?)\/home.json$/, /^\/([^\/]+?)\/(.+).json$/];
 var components = [{
   js: function js() {
-    return import('./index.9b876a1c.js');
+    return import('./index.53eb11a8.js');
   },
   css: []
 }, {
   js: function js() {
-    return import('./index.3608a1c9.js');
+    return import('./index.39a453b4.js');
   },
   css: []
 }, {
   js: function js() {
-    return import('./[...slug].caf4dbc0.js');
+    return import('./home.95aad555.js');
   },
   css: []
 }, {
   js: function js() {
-    return import('./[lang].0988ec57.js');
+    return import('./[...slug].f3361196.js');
   },
   css: []
 }];
@@ -7396,25 +7409,25 @@ var routes = function (d) {
       i: 1
     }]
   }, {
-    // [lang]/[...slug].svelte
-    pattern: /^\/([^\/]+?)\/(.+)\/?$/,
+    // [lang]/home.svelte
+    pattern: /^\/([^\/]+?)\/home\/?$/,
     parts: [null, {
       i: 2,
       params: function params(match) {
         return {
-          lang: d(match[1]),
-          slug: d(match[2]).split('/')
+          lang: d(match[1])
         };
       }
     }]
   }, {
-    // [lang].svelte
-    pattern: /^\/([^\/]+?)\/?$/,
-    parts: [{
+    // [lang]/[...slug].svelte
+    pattern: /^\/([^\/]+?)\/(.+)\/?$/,
+    parts: [null, {
       i: 3,
       params: function params(match) {
         return {
-          lang: d(match[1])
+          lang: d(match[1]),
+          slug: d(match[2]).split('/')
         };
       }
     }]

@@ -1,4 +1,4 @@
-import { A as _typeof, B as commonjsRequire, C as createCommonjsModule, D as getCjsExportFromNamespace, h as get_store_value, f as config, E as docsMap, b as _inherits, c as _classCallCheck, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, S as SvelteComponentDev, F as validate_each_argument, y as _slicedToArray, v as validate_slots, j as getLanguage, g as docs, k as _getPrototypeOf, l as _possibleConstructorReturn, n as element, G as text, r as claim_element, t as children, H as claim_text, o as detach_dev, u as attr_dev, w as add_location, x as insert_dev, I as append_dev, z as noop, J as empty, K as destroy_each } from './client.c7770aee.js';
+import { A as _typeof, B as commonjsRequire, C as createCommonjsModule, D as getCjsExportFromNamespace, h as get_store_value, f as config, E as docsMap, b as _inherits, c as _classCallCheck, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, S as SvelteComponentDev, F as validate_each_argument, y as _slicedToArray, v as validate_slots, j as getLanguage, g as docs, k as _getPrototypeOf, l as _possibleConstructorReturn, n as element, G as text, r as claim_element, t as children, H as claim_text, o as detach_dev, u as attr_dev, w as add_location, x as insert_dev, I as append_dev, z as noop, m as space, p as claim_space, J as empty, K as destroy_each } from './client.7eff8823.js';
 import fs from 'fs';
 
 var _nodeResolve_empty = {};
@@ -4548,14 +4548,20 @@ function get_each_context(ctx, list, i) {
   var child_ctx = ctx.slice();
   child_ctx[2] = list[i];
   return child_ctx;
+}
+
+function get_each_context_1(ctx, list, i) {
+  var child_ctx = ctx.slice();
+  child_ctx[5] = list[i];
+  return child_ctx;
 } // (18:0) {#each slugs as slug}
 
 
-function create_each_block(ctx) {
+function create_each_block_1(ctx) {
   var a;
   var t_value =
   /*slug*/
-  ctx[2] + "";
+  ctx[5] + "";
   var t;
   var a_href_value;
   var block = {
@@ -4576,7 +4582,7 @@ function create_each_block(ctx) {
     h: function hydrate() {
       attr_dev(a, "href", a_href_value =
       /*slug*/
-      ctx[2]);
+      ctx[5]);
       add_location(a, file, 18, 2, 523);
     },
     m: function mount(target, anchor) {
@@ -4590,47 +4596,127 @@ function create_each_block(ctx) {
   };
   dispatch_dev("SvelteRegisterBlock", {
     block: block,
-    id: create_each_block.name,
+    id: create_each_block_1.name,
     type: "each",
     source: "(18:0) {#each slugs as slug}",
+    ctx: ctx
+  });
+  return block;
+} // (22:0) {#each config.availableLanguages as lang}
+
+
+function create_each_block(ctx) {
+  var a;
+  var t0_value =
+  /*lang*/
+  ctx[2].id + "";
+  var t0;
+  var a_href_value;
+  var t1;
+  var block = {
+    c: function create() {
+      a = element("a");
+      t0 = text(t0_value);
+      t1 = space();
+      this.h();
+    },
+    l: function claim(nodes) {
+      a = claim_element(nodes, "A", {
+        href: true
+      });
+      var a_nodes = children(a);
+      t0 = claim_text(a_nodes, t0_value);
+      a_nodes.forEach(detach_dev);
+      t1 = claim_space(nodes);
+      this.h();
+    },
+    h: function hydrate() {
+      attr_dev(a, "href", a_href_value = "".concat(
+      /*lang*/
+      ctx[2].id, "/").concat(config.landingSlug));
+      add_location(a, file, 22, 2, 602);
+    },
+    m: function mount(target, anchor) {
+      insert_dev(target, a, anchor);
+      append_dev(a, t0);
+      insert_dev(target, t1, anchor);
+    },
+    p: noop,
+    d: function destroy(detaching) {
+      if (detaching) detach_dev(a);
+      if (detaching) detach_dev(t1);
+    }
+  };
+  dispatch_dev("SvelteRegisterBlock", {
+    block: block,
+    id: create_each_block.name,
+    type: "each",
+    source: "(22:0) {#each config.availableLanguages as lang}",
     ctx: ctx
   });
   return block;
 }
 
 function create_fragment(ctx) {
-  var each_1_anchor;
-  var each_value =
+  var t;
+  var each1_anchor;
+  var each_value_1 =
   /*slugs*/
   ctx[0];
+  validate_each_argument(each_value_1);
+  var each_blocks_1 = [];
+
+  for (var i = 0; i < each_value_1.length; i += 1) {
+    each_blocks_1[i] = create_each_block_1(get_each_context_1(ctx, each_value_1, i));
+  }
+
+  var each_value = config.availableLanguages;
   validate_each_argument(each_value);
   var each_blocks = [];
 
-  for (var i = 0; i < each_value.length; i += 1) {
-    each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+  for (var _i = 0; _i < each_value.length; _i += 1) {
+    each_blocks[_i] = create_each_block(get_each_context(ctx, each_value, _i));
   }
 
   var block = {
     c: function create() {
-      for (var _i = 0; _i < each_blocks.length; _i += 1) {
-        each_blocks[_i].c();
+      for (var _i2 = 0; _i2 < each_blocks_1.length; _i2 += 1) {
+        each_blocks_1[_i2].c();
       }
 
-      each_1_anchor = empty();
+      t = space();
+
+      for (var _i3 = 0; _i3 < each_blocks.length; _i3 += 1) {
+        each_blocks[_i3].c();
+      }
+
+      each1_anchor = empty();
     },
     l: function claim(nodes) {
-      for (var _i2 = 0; _i2 < each_blocks.length; _i2 += 1) {
-        each_blocks[_i2].l(nodes);
+      for (var _i4 = 0; _i4 < each_blocks_1.length; _i4 += 1) {
+        each_blocks_1[_i4].l(nodes);
       }
 
-      each_1_anchor = empty();
+      t = claim_space(nodes);
+
+      for (var _i5 = 0; _i5 < each_blocks.length; _i5 += 1) {
+        each_blocks[_i5].l(nodes);
+      }
+
+      each1_anchor = empty();
     },
     m: function mount(target, anchor) {
-      for (var _i3 = 0; _i3 < each_blocks.length; _i3 += 1) {
-        each_blocks[_i3].m(target, anchor);
+      for (var _i6 = 0; _i6 < each_blocks_1.length; _i6 += 1) {
+        each_blocks_1[_i6].m(target, anchor);
       }
 
-      insert_dev(target, each_1_anchor, anchor);
+      insert_dev(target, t, anchor);
+
+      for (var _i7 = 0; _i7 < each_blocks.length; _i7 += 1) {
+        each_blocks[_i7].m(target, anchor);
+      }
+
+      insert_dev(target, each1_anchor, anchor);
     },
     p: function update(ctx, _ref) {
       var _ref2 = _slicedToArray(_ref, 1),
@@ -4639,29 +4725,58 @@ function create_fragment(ctx) {
       if (dirty &
       /*slugs*/
       1) {
-        each_value =
+        each_value_1 =
         /*slugs*/
         ctx[0];
-        validate_each_argument(each_value);
+        validate_each_argument(each_value_1);
 
-        var _i4;
+        var _i8;
 
-        for (_i4 = 0; _i4 < each_value.length; _i4 += 1) {
-          var child_ctx = get_each_context(ctx, each_value, _i4);
+        for (_i8 = 0; _i8 < each_value_1.length; _i8 += 1) {
+          var child_ctx = get_each_context_1(ctx, each_value_1, _i8);
 
-          if (each_blocks[_i4]) {
-            each_blocks[_i4].p(child_ctx, dirty);
+          if (each_blocks_1[_i8]) {
+            each_blocks_1[_i8].p(child_ctx, dirty);
           } else {
-            each_blocks[_i4] = create_each_block(child_ctx);
+            each_blocks_1[_i8] = create_each_block_1(child_ctx);
 
-            each_blocks[_i4].c();
+            each_blocks_1[_i8].c();
 
-            each_blocks[_i4].m(each_1_anchor.parentNode, each_1_anchor);
+            each_blocks_1[_i8].m(t.parentNode, t);
           }
         }
 
-        for (; _i4 < each_blocks.length; _i4 += 1) {
-          each_blocks[_i4].d(1);
+        for (; _i8 < each_blocks_1.length; _i8 += 1) {
+          each_blocks_1[_i8].d(1);
+        }
+
+        each_blocks_1.length = each_value_1.length;
+      }
+
+      if (dirty &
+      /*config*/
+      0) {
+        each_value = config.availableLanguages;
+        validate_each_argument(each_value);
+
+        var _i9;
+
+        for (_i9 = 0; _i9 < each_value.length; _i9 += 1) {
+          var _child_ctx = get_each_context(ctx, each_value, _i9);
+
+          if (each_blocks[_i9]) {
+            each_blocks[_i9].p(_child_ctx, dirty);
+          } else {
+            each_blocks[_i9] = create_each_block(_child_ctx);
+
+            each_blocks[_i9].c();
+
+            each_blocks[_i9].m(each1_anchor.parentNode, each1_anchor);
+          }
+        }
+
+        for (; _i9 < each_blocks.length; _i9 += 1) {
+          each_blocks[_i9].d(1);
         }
 
         each_blocks.length = each_value.length;
@@ -4670,8 +4785,10 @@ function create_fragment(ctx) {
     i: noop,
     o: noop,
     d: function destroy(detaching) {
+      destroy_each(each_blocks_1, detaching);
+      if (detaching) detach_dev(t);
       destroy_each(each_blocks, detaching);
-      if (detaching) detach_dev(each_1_anchor);
+      if (detaching) detach_dev(each1_anchor);
     }
   };
   dispatch_dev("SvelteRegisterBlock", {
