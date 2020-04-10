@@ -4829,13 +4829,13 @@ function create_each_block_3(ctx) {
       /*nav*/
       ctx[8].icon) + " svelte-gbajag"));
       set_style(span, "margin-right", ".5rem");
-      add_location(span, file$5, 71, 12, 1471);
+      add_location(span, file$5, 71, 12, 1460);
       attr_dev(a, "href", a_href_value =
       /*nav*/
       ctx[8].url);
       attr_dev(a, "target", "_blank");
-      add_location(a, file$5, 70, 10, 1424);
-      add_location(li, file$5, 68, 8, 1408);
+      add_location(a, file$5, 70, 10, 1413);
+      add_location(li, file$5, 68, 8, 1397);
     },
     m: function mount(target, anchor) {
       insert_dev(target, li, anchor);
@@ -4899,7 +4899,7 @@ function create_if_block_1$2(ctx) {
       attr_dev(ul, "id", "language-menu");
       attr_dev(ul, "class", "nav-dropdown-menu-items right");
       attr_dev(ul, "role", "menu");
-      add_location(ul, file$5, 90, 10, 2064);
+      add_location(ul, file$5, 90, 10, 2053);
     },
     m: function mount(target, anchor) {
       insert_dev(target, ul, anchor);
@@ -5005,9 +5005,9 @@ function create_each_block_2(ctx) {
     },
     h: function hydrate() {
       attr_dev(div, "style", div_style_value = "cursor:pointer");
-      add_location(div, file$5, 97, 16, 2346);
+      add_location(div, file$5, 97, 16, 2335);
       attr_dev(li, "class", "nav-menuitem");
-      add_location(li, file$5, 95, 14, 2242);
+      add_location(li, file$5, 95, 14, 2231);
     },
     m: function mount(target, anchor, remount) {
       insert_dev(target, li, anchor);
@@ -5092,7 +5092,7 @@ function create_if_block$4(ctx) {
     },
     h: function hydrate() {
       attr_dev(ul, "class", "mobile-menu menu svelte-gbajag");
-      add_location(ul, file$5, 111, 6, 2670);
+      add_location(ul, file$5, 111, 6, 2659);
     },
     m: function mount(target, anchor) {
       insert_dev(target, ul, anchor);
@@ -5216,8 +5216,8 @@ function create_each_block_1$2(ctx) {
       /*nav*/
       ctx[8].url);
       attr_dev(a, "target", "_blank");
-      add_location(a, file$5, 114, 12, 2768);
-      add_location(li, file$5, 113, 10, 2751);
+      add_location(a, file$5, 114, 12, 2757);
+      add_location(li, file$5, 113, 10, 2740);
     },
     m: function mount(target, anchor) {
       insert_dev(target, li, anchor);
@@ -5274,8 +5274,8 @@ function create_each_block$2(ctx) {
     h: function hydrate() {
       attr_dev(a, "href", "#");
       attr_dev(a, "title", "Catalan");
-      add_location(a, file$5, 121, 12, 2931);
-      add_location(li, file$5, 120, 10, 2914);
+      add_location(a, file$5, 121, 12, 2920);
+      add_location(li, file$5, 120, 10, 2903);
     },
     m: function mount(target, anchor, remount) {
       insert_dev(target, li, anchor);
@@ -5480,35 +5480,35 @@ function create_fragment$5(ctx) {
       if (img.src !== (img_src_value = data.projectLogo)) attr_dev(img, "src", img_src_value);
       attr_dev(img, "alt", "nicedocs-logo");
       attr_dev(img, "class", "svelte-gbajag");
-      add_location(img, file$5, 58, 8, 1185);
-      add_location(span0, file$5, 59, 8, 1246);
+      add_location(img, file$5, 58, 8, 1174);
+      add_location(span0, file$5, 59, 8, 1235);
       attr_dev(a, "href", "/");
       attr_dev(a, "class", "svelte-gbajag");
-      add_location(a, file$5, 57, 6, 1164);
+      add_location(a, file$5, 57, 6, 1153);
       attr_dev(div0, "class", "nav-logo svelte-gbajag");
-      add_location(div0, file$5, 56, 4, 1135);
+      add_location(div0, file$5, 56, 4, 1124);
       attr_dev(ul0, "class", "nav-links");
-      add_location(ul0, file$5, 63, 4, 1307);
+      add_location(ul0, file$5, 63, 4, 1296);
       attr_dev(span1, "class", "fa fa-language");
       set_style(span1, "margin-right", ".5rem");
-      add_location(span1, file$5, 82, 10, 1767);
+      add_location(span1, file$5, 82, 10, 1756);
       attr_dev(span2, "class", "dropdown-arrow-down");
       attr_dev(span2, "aria-hidden", "true");
-      add_location(span2, file$5, 85, 10, 1910);
+      add_location(span2, file$5, 85, 10, 1899);
       attr_dev(button, "id", "header-language-menu");
       attr_dev(button, "type", "button");
       attr_dev(button, "class", "nav-dropdown-menu-label");
-      add_location(button, file$5, 78, 8, 1646);
+      add_location(button, file$5, 78, 8, 1635);
       attr_dev(li, "class", "nav-dropdown-container");
-      add_location(li, file$5, 77, 6, 1602);
+      add_location(li, file$5, 77, 6, 1591);
       attr_dev(ul1, "class", "nav-links");
-      add_location(ul1, file$5, 65, 4, 1337);
+      add_location(ul1, file$5, 65, 4, 1326);
       attr_dev(div1, "class", "mobile-menu-toggle");
-      add_location(div1, file$5, 109, 4, 2604);
+      add_location(div1, file$5, 109, 4, 2593);
       attr_dev(div2, "class", "nav-container");
       attr_dev(div2, "}", "");
-      add_location(div2, file$5, 55, 2, 1101);
-      add_location(nav, file$5, 54, 0, 1093);
+      add_location(div2, file$5, 55, 2, 1090);
+      add_location(nav, file$5, 54, 0, 1082);
     },
     m: function mount(target, anchor, remount) {
       insert_dev(target, t0, anchor);
@@ -5641,7 +5641,7 @@ function create_fragment$5(ctx) {
 
 function changeLanguage(lang) {
   currentLanguage.set(lang);
-  goto(lang.id + "/index").then(function () {
+  goto(lang.id).then(function () {
     return location.reload();
   });
 }
@@ -7360,20 +7360,25 @@ var App = /*#__PURE__*/function (_SvelteComponentDev) {
 }(SvelteComponentDev);
 
 // This file is generated by Sapper — do not edit it!
-var ignore = [/^\/index.json$/, /^\/crawler\/crawler.json$/, /^\/([^\/]+?)\/(.+).json$/];
+var ignore = [/^\/index.json$/, /^\/crawler\/crawler.json$/, /^\/([^\/]+?).json$/, /^\/([^\/]+?)\/(.+).json$/];
 var components = [{
   js: function js() {
-    return import('./index.c5a15065.js');
+    return import('./index.9b876a1c.js');
   },
   css: []
 }, {
   js: function js() {
-    return import('./index.f87a5693.js');
+    return import('./index.3608a1c9.js');
   },
   css: []
 }, {
   js: function js() {
-    return import('./[...slug].ded5ab3e.js');
+    return import('./[...slug].caf4dbc0.js');
+  },
+  css: []
+}, {
+  js: function js() {
+    return import('./[lang].0988ec57.js');
   },
   css: []
 }];
@@ -7399,6 +7404,17 @@ var routes = function (d) {
         return {
           lang: d(match[1]),
           slug: d(match[2]).split('/')
+        };
+      }
+    }]
+  }, {
+    // [lang].svelte
+    pattern: /^\/([^\/]+?)\/?$/,
+    parts: [{
+      i: 3,
+      params: function params(match) {
+        return {
+          lang: d(match[1])
         };
       }
     }]

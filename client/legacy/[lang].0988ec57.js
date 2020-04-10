@@ -1,15 +1,12 @@
-import { _ as _asyncToGenerator, a as _regeneratorRuntime, g as docs, j as getLanguage, L as currentLanguage, b as _inherits, c as _classCallCheck, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, S as SvelteComponentDev, f as config, M as doc, N as validate_store, O as component_subscribe, v as validate_slots, h as get_store_value, k as _getPrototypeOf, l as _possibleConstructorReturn, n as element, m as space, q as query_selector_all, r as claim_element, t as children, o as detach_dev, p as claim_space, u as attr_dev, w as add_location, I as append_dev, x as insert_dev, y as _slicedToArray, z as noop } from './client.326fb8f0.js';
+import { _ as _asyncToGenerator, a as _regeneratorRuntime, g as docs, j as getLanguage, L as currentLanguage, b as _inherits, c as _classCallCheck, i as init, s as safe_not_equal, d as _assertThisInitialized, e as dispatch_dev, S as SvelteComponentDev, f as config, M as doc, N as validate_store, O as component_subscribe, v as validate_slots, h as get_store_value, k as _getPrototypeOf, l as _possibleConstructorReturn, m as space, n as element, q as query_selector_all, o as detach_dev, p as claim_space, r as claim_element, t as children, u as attr_dev, w as add_location, x as insert_dev, y as _slicedToArray, z as noop } from './client.c7770aee.js';
 
 function _createSuper(Derived) { return function () { var Super = _getPrototypeOf(Derived), result; if (_isNativeReflectConstruct()) { var NewTarget = _getPrototypeOf(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return _possibleConstructorReturn(this, result); }; }
 
 function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
-var file = "src/routes/[lang]/[...slug].svelte";
+var file = "src/routes/[lang].svelte";
 
 function create_fragment(ctx) {
   var title_value;
-  var link;
-  var script;
-  var script_src_value;
   var t;
   var div;
   var raw_value =
@@ -20,23 +17,12 @@ function create_fragment(ctx) {
   ctx[0].title + " | " + config.projectName);
   var block = {
     c: function create() {
-      link = element("link");
-      script = element("script");
       t = space();
       div = element("div");
       this.h();
     },
     l: function claim(nodes) {
-      var head_nodes = query_selector_all("[data-svelte=\"svelte-smj55p\"]", document.head);
-      link = claim_element(head_nodes, "LINK", {
-        rel: true,
-        href: true
-      });
-      script = claim_element(head_nodes, "SCRIPT", {
-        src: true
-      });
-      var script_nodes = children(script);
-      script_nodes.forEach(detach_dev);
+      var head_nodes = query_selector_all("[data-svelte=\"svelte-13feyxl\"]", document.head);
       head_nodes.forEach(detach_dev);
       t = claim_space(nodes);
       div = claim_element(nodes, "DIV", {
@@ -47,17 +33,10 @@ function create_fragment(ctx) {
       this.h();
     },
     h: function hydrate() {
-      attr_dev(link, "rel", "stylesheet");
-      attr_dev(link, "href", "https://cdn.jsdelivr.net/npm/prismjs@1.19.0/themes/prism.min.css");
-      add_location(link, file, 39, 2, 1242);
-      if (script.src !== (script_src_value = "https://cdn.jsdelivr.net/npm/prismjs@1.19.0/prism.min.js")) attr_dev(script, "src", script_src_value);
-      add_location(script, file, 42, 2, 1350);
       attr_dev(div, "class", "content");
-      add_location(div, file, 47, 0, 1451);
+      add_location(div, file, 38, 0, 1188);
     },
     m: function mount(target, anchor) {
-      append_dev(document.head, link);
-      append_dev(document.head, script);
       insert_dev(target, t, anchor);
       insert_dev(target, div, anchor);
       div.innerHTML = raw_value;
@@ -83,8 +62,6 @@ function create_fragment(ctx) {
     i: noop,
     o: noop,
     d: function destroy(detaching) {
-      detach_dev(link);
-      detach_dev(script);
       if (detaching) detach_dev(t);
       if (detaching) detach_dev(div);
     }
@@ -132,7 +109,7 @@ function _preload() {
             // it force a rerender and loose store state (current language and sidebar)...
 
             _context.next = 12;
-            return this.fetch("".concat(params.lang, "/").concat(params.slug.join("/"), ".json"));
+            return this.fetch("".concat(params.lang, "/index.json"));
 
           case 12:
             res = _context.sent;
@@ -166,12 +143,12 @@ function instance($$self, $$props, $$invalidate) {
   });
   var writable_props = [];
   Object.keys($$props).forEach(function (key) {
-    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<U5B_slugu5D> was created with unknown prop '".concat(key, "'"));
+    if (!~writable_props.indexOf(key) && key.slice(0, 2) !== "$$") console.warn("<U5Blangu5D> was created with unknown prop '".concat(key, "'"));
   });
   var _$$props$$$slots = $$props.$$slots,
       $$slots = _$$props$$$slots === void 0 ? {} : _$$props$$$slots,
       $$scope = $$props.$$scope;
-  validate_slots("U5B_slugu5D", $$slots, []);
+  validate_slots("U5Blangu5D", $$slots, []);
 
   $$self.$capture_state = function () {
     return {
@@ -189,29 +166,29 @@ function instance($$self, $$props, $$invalidate) {
   return [$doc];
 }
 
-var U5B_slugu5D = /*#__PURE__*/function (_SvelteComponentDev) {
-  _inherits(U5B_slugu5D, _SvelteComponentDev);
+var U5Blangu5D = /*#__PURE__*/function (_SvelteComponentDev) {
+  _inherits(U5Blangu5D, _SvelteComponentDev);
 
-  var _super = _createSuper(U5B_slugu5D);
+  var _super = _createSuper(U5Blangu5D);
 
-  function U5B_slugu5D(options) {
+  function U5Blangu5D(options) {
     var _this;
 
-    _classCallCheck(this, U5B_slugu5D);
+    _classCallCheck(this, U5Blangu5D);
 
     _this = _super.call(this, options);
     init(_assertThisInitialized(_this), options, instance, create_fragment, safe_not_equal, {});
     dispatch_dev("SvelteRegisterComponent", {
       component: _assertThisInitialized(_this),
-      tagName: "U5B_slugu5D",
+      tagName: "U5Blangu5D",
       options: options,
       id: create_fragment.name
     });
     return _this;
   }
 
-  return U5B_slugu5D;
+  return U5Blangu5D;
 }(SvelteComponentDev);
 
-export default U5B_slugu5D;
+export default U5Blangu5D;
 export { preload };
