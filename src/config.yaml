@@ -35,3 +35,7 @@ navigation:
 
 # Copyright Disclaimer on Footer
 copyright: Made with 🧉 by <a href="https://aboni.dev">Alexis Boni</a>. Licensed under the GPLv3 License.
+
+# Assets
+img404: '404.svg'   			#  404 Image to show on not found url.
+imgError: 'error.svg'  		#  Fallback Error Image

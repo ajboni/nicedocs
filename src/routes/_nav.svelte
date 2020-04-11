@@ -27,6 +27,8 @@
 
   function changeLanguage(lang) {
     currentLanguage.set(lang);
+
+    // We need to reload to trigger a new fetch with the new language.
     goto(lang.id + "/home").then(() => location.reload());
   }
 
@@ -123,7 +125,7 @@
 
         {#each config.availableLanguages as lang}
           <li>
-            <a href="#" on:click={changeLanguage(lang)} title="Catalan">
+            <a href="#" on:click={() => changeLanguage(lang)} title="Catalan">
               {lang.caption}
             </a>
           </li>
