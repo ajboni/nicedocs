@@ -1,6 +1,8 @@
-# NICEDOCS
 
 This project is abandoned in favour of https://github.com/ajboni/sveldocs
+
+
+# NICEDOCS
 
 A really simple static documentation generator powerded by [sapper](https://sapper.svelte.dev), [svelte](https://svelte.dev) and [mustard-ui](https://github.com/kylelogue/mustard-ui)
 
